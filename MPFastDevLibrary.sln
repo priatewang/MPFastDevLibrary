@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPServiceContract", "MPServ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPServiceController", "MPServiceController\MPServiceController.csproj", "{62712862-7804-4AD6-BECC-E039F21877C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfHostDemo", "WcfHostDemo\WcfHostDemo.csproj", "{58FBF96B-1E9A-451E-B975-8966BB35DFAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfClientDemo", "WcfClientDemo\WcfClientDemo.csproj", "{12D5EEE1-ABBD-465D-9F9C-B2B70DA526BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{62712862-7804-4AD6-BECC-E039F21877C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62712862-7804-4AD6-BECC-E039F21877C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62712862-7804-4AD6-BECC-E039F21877C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58FBF96B-1E9A-451E-B975-8966BB35DFAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58FBF96B-1E9A-451E-B975-8966BB35DFAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58FBF96B-1E9A-451E-B975-8966BB35DFAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58FBF96B-1E9A-451E-B975-8966BB35DFAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12D5EEE1-ABBD-465D-9F9C-B2B70DA526BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12D5EEE1-ABBD-465D-9F9C-B2B70DA526BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12D5EEE1-ABBD-465D-9F9C-B2B70DA526BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12D5EEE1-ABBD-465D-9F9C-B2B70DA526BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
