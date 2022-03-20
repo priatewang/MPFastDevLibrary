@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPServiceContract", "MPServiceContract\MPServiceContract.csproj", "{6C020035-904F-4E6C-BFBE-5FDBB33A003A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPServiceContract", "Wcf\MPServiceContract\MPServiceContract.csproj", "{6C020035-904F-4E6C-BFBE-5FDBB33A003A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPServiceController", "MPServiceController\MPServiceController.csproj", "{62712862-7804-4AD6-BECC-E039F21877C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPServiceController", "Wcf\MPServiceController\MPServiceController.csproj", "{62712862-7804-4AD6-BECC-E039F21877C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfHostDemo", "WcfHostDemo\WcfHostDemo.csproj", "{58FBF96B-1E9A-451E-B975-8966BB35DFAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfHostDemo", "Wcf\WcfHostDemo\WcfHostDemo.csproj", "{58FBF96B-1E9A-451E-B975-8966BB35DFAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfClientDemo", "WcfClientDemo\WcfClientDemo.csproj", "{12D5EEE1-ABBD-465D-9F9C-B2B70DA526BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfClientDemo", "Wcf\WcfClientDemo\WcfClientDemo.csproj", "{12D5EEE1-ABBD-465D-9F9C-B2B70DA526BB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPFastDevLibrary.Core", "MPFastDevLibrary.Core\MPFastDevLibrary.Core.csproj", "{583BF944-5D36-4F0E-A639-A626ED2E4D70}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wcf", "Wcf", "{A442EE48-4616-42C7-A5BA-A049B11EFDB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6C020035-904F-4E6C-BFBE-5FDBB33A003A} = {A442EE48-4616-42C7-A5BA-A049B11EFDB3}
+		{62712862-7804-4AD6-BECC-E039F21877C9} = {A442EE48-4616-42C7-A5BA-A049B11EFDB3}
+		{58FBF96B-1E9A-451E-B975-8966BB35DFAB} = {A442EE48-4616-42C7-A5BA-A049B11EFDB3}
+		{12D5EEE1-ABBD-465D-9F9C-B2B70DA526BB} = {A442EE48-4616-42C7-A5BA-A049B11EFDB3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {83BCD9F2-7C5C-446A-A795-89250BBB21CC}
