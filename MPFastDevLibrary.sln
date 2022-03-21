@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfHostDemo", "Wcf\WcfHostD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfClientDemo", "Wcf\WcfClientDemo\WcfClientDemo.csproj", "{12D5EEE1-ABBD-465D-9F9C-B2B70DA526BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPFastDevLibrary.Core", "MPFastDevLibrary.Core\MPFastDevLibrary.Core.csproj", "{583BF944-5D36-4F0E-A639-A626ED2E4D70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPFastDevLibrary.Common", "MPFastDevLibrary.Common\MPFastDevLibrary.Common.csproj", "{583BF944-5D36-4F0E-A639-A626ED2E4D70}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wcf", "Wcf", "{A442EE48-4616-42C7-A5BA-A049B11EFDB3}"
 EndProject
