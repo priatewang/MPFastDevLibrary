@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net45;net5.0</TargetFrameworks>
+    <Authors>priatewang</Authors>
+    <Description>my fast development platform.</Description>
   </PropertyGroup>
 
 </Project>
