@@ -2,7 +2,7 @@
 using System.Net;
 using System.Runtime.InteropServices;
 
-namespace MPFastDevLibrary.Core
+namespace MPFastDevLibrary.Common
 {
     /// <summary>
     /// 字节通信辅助类

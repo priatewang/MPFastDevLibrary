@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MPFastDevLibrary.Common\MPFastDevLibrary.Core.csproj" />
+    <ProjectReference Include="..\MPFastDevLibrary.Core\MPFastDevLibrary.Core.csproj" />
   </ItemGroup>
 
 </Project>
