@@ -8,8 +8,4 @@
     <RootNamespace>MPFastDevLibrary</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Ioc\" />
-  </ItemGroup>
-
 </Project>
