@@ -13,7 +13,11 @@ namespace ConsoleAppTest
             AttTest attTest = new AttTest();
             var att = typeof(AttTest).GetCustomAttribute<AutoIocAttribute>();
 
-            Console.WriteLine(att.InstanceClass);
+            Console.WriteLine(att.RelationClassType);
+
+
+            ContainerBuilder builder = new ContainerBuilder();
+            builder.AutoRegisterIoc();
         }
     }
 }
