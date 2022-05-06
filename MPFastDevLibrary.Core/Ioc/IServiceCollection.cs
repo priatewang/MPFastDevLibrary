@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MPFastDevLibrary.Ioc
 {
-    public interface IContainerBuilder
+    public interface IServiceCollection : IList<ServiceDescriptor>
     {
 
     }

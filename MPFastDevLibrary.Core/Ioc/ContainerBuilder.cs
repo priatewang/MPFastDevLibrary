@@ -11,8 +11,10 @@ namespace MPFastDevLibrary.Ioc
     {
         public ContainerBuilder()
         {
-
+            serviceDescriptors = new ServiceCollection();
         }
+
+        IServiceCollection serviceDescriptors;
 
         public void AutoRegisterIoc()
         {
@@ -54,6 +56,17 @@ namespace MPFastDevLibrary.Ioc
 
 
             }
+        }
+
+        public void RegisterType<TService>() 
+        {
+            serviceDescriptors.Add(new ServiceDescriptor(typeof(TService)));
+        }
+
+        public IContainer Build()
+        {
+            return new Container(serviceDescriptors);
+
         }
 
     }

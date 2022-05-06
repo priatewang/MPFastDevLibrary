@@ -18,14 +18,10 @@ namespace MPFastDevLibrary.Ioc
         Singleton,
 
         /// <summary>
-        /// 服务多例模式
+        /// 绝对唯一
         /// </summary>
-        ServiceNormal,
-        /// <summary>
-        /// 服务单例
-        /// </summary>
-        ServiceSigleton,
-        
+        AbsoluteSingle,
+
     }
 
     public class AutoIocAttribute : Attribute
