@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace MPFastDevLibrary.Ioc
 {
-    public enum IocType
+    /// <summary>
+    /// 实例类型
+    /// </summary>
+    public enum InstanceType
     {
         /// <summary>
         /// 正常模式,多例
@@ -26,14 +29,14 @@ namespace MPFastDevLibrary.Ioc
 
     public class AutoIocAttribute : Attribute
     {
-        public IocType InstanceType { get; set; }
+        public InstanceType InstanceType { get; set; }
 
         /// <summary>
         /// 接口服务对应实现类
         /// </summary>
         public Type RelationClassType { get; set; }
 
-        public AutoIocAttribute(IocType iocType=IocType.Normal)
+        public AutoIocAttribute(InstanceType iocType=InstanceType.Normal)
         {
             InstanceType = iocType;
           

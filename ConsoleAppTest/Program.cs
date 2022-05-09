@@ -19,12 +19,15 @@ namespace ConsoleAppTest
             ContainerBuilder builder = new ContainerBuilder();
             builder.AutoRegisterIoc();
             builder.RegisterType<User>();
+            builder.RegisterType<IMyService, MyService>();
 
             IContainer container = builder.Build();
 
             var user = container.Resolve<User>();
             user.Send();
 
+            var service = container.Resolve<IMyService>();
+            service.Send("hahahha");
 
             Console.ReadKey();
         }

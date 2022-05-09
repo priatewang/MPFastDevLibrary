@@ -37,7 +37,7 @@ namespace MPFastDevLibrary.Ioc
         /// <summary>
         /// 类型
         /// </summary>
-        public IocType ServiceType { get; set; }
+        public InstanceType ServiceType { get; set; }
 
 
         /// <summary>
@@ -46,14 +46,8 @@ namespace MPFastDevLibrary.Ioc
         public object Instance { get; set; }
 
 
-        public ServiceDescriptor(Type type)
-            : this(type, type, type.GetHashCode(), iocType: IocType.Singleton)
-        {
-
-        }
-
-        public ServiceDescriptor(Type source, Type target)
-            : this(source, target, target.GetHashCode(), iocType: IocType.Singleton)
+        public ServiceDescriptor(Type type, InstanceType iocType = InstanceType.Normal)
+            : this(type, type, iocType)
         {
 
         }
@@ -65,28 +59,36 @@ namespace MPFastDevLibrary.Ioc
         /// <param name="target"></param>
         /// <param name="id"></param>
         /// <param name="iocType"></param>
-        public ServiceDescriptor(Type source, Type target, int id, IocType iocType)
+        public ServiceDescriptor(Type source, Type target, InstanceType iocType = InstanceType.Normal)
         {
             Source = source;
             TargetService = target;
-            ID = id;
+            ID = source.GetHashCode();
+            TargetID = target.GetHashCode();
             ServiceType = iocType;
-            if (ServiceType == IocType.Singleton)
+            if (ServiceType == InstanceType.Singleton)
             {
                 Instance = CreateInstance(target);
             }
         }
 
-        public object GetService()
+        public object GetService(IServiceCollection descriptors)
         {
             switch (ServiceType)
             {
-                case IocType.Normal:
+                case InstanceType.Normal:
                     return CreateInstance(TargetService);
-                case IocType.Singleton:
+                case InstanceType.Singleton:
                     return Instance;
-                case IocType.AbsoluteSingle:
-                    return Instance;
+                case InstanceType.AbsoluteSingle:
+                    if (TargetID == ID)
+                    {
+                        return Instance;
+                    }
+                    else
+                    {
+                        return descriptors[TargetID].GetService(descriptors);
+                    }
                 default:
                     return CreateInstance(TargetService);
             }

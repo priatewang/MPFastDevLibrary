@@ -23,4 +23,19 @@ namespace ConsoleAppTest
             Console.WriteLine(" User Send  ok....");
         }
     }
+
+
+    public interface IMyService
+    {
+        void Send(string msg);
+    }
+
+    public class MyService : IMyService
+    {
+        public void Send(string msg)
+        {
+            Console.WriteLine($" User MyService Send  {msg}....");
+        }
+    }
+
 }

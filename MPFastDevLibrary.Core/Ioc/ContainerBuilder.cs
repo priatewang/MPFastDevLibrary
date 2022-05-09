@@ -50,7 +50,7 @@ namespace MPFastDevLibrary.Ioc
                         //处理ioc自动注册
 
                     }
-                    
+
                 }
 
 
@@ -58,10 +58,29 @@ namespace MPFastDevLibrary.Ioc
             }
         }
 
-        public void RegisterType<TService>() 
+        public void RegisterType<TService>(InstanceType type = InstanceType.Normal) where TService : class
         {
-            serviceDescriptors.Add(new ServiceDescriptor(typeof(TService)));
+            serviceDescriptors.Add(new ServiceDescriptor(typeof(TService), type));
         }
+
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <typeparam name="IService">源类型（接口）</typeparam>
+        /// <typeparam name="TService">目标类型（类）</typeparam>
+        /// <param name="type"></param>
+        public void RegisterType<IService, TService>(InstanceType type = InstanceType.Normal) where TService : class
+        {
+            serviceDescriptors.Add(new ServiceDescriptor(typeof(IService), typeof(TService), type));
+            if (type == InstanceType.AbsoluteSingle)
+            {
+                //如果为绝对唯一，为TService添加唯一服务对象
+                int id = typeof(TService).GetHashCode();
+                serviceDescriptors.Add(new ServiceDescriptor(typeof(TService), type));
+
+            }
+        }
+
 
         public IContainer Build()
         {

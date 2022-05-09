@@ -39,7 +39,17 @@ namespace MPFastDevLibrary.Ioc
 
         public void Add(ServiceDescriptor item)
         {
-            _descriptors.Add(item.ID, item);
+            if (_descriptors.ContainsKey(item.ID))
+            {
+                //存在则替换
+                _descriptors[item.ID] = item;
+            }
+            else
+            {
+                _descriptors.Add(item.ID, item);
+            }
+
+
         }
 
         public void Clear()
@@ -70,7 +80,7 @@ namespace MPFastDevLibrary.Ioc
 
         public void Insert(int index, ServiceDescriptor item)
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
 
         public bool Remove(ServiceDescriptor item)
@@ -85,7 +95,8 @@ namespace MPFastDevLibrary.Ioc
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _descriptors.GetEnumerator();
+
         }
     }
 }
