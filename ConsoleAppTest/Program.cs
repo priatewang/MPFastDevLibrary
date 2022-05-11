@@ -19,7 +19,9 @@ namespace ConsoleAppTest
             ContainerBuilder builder = new ContainerBuilder();
             builder.AutoRegisterIoc();
             builder.RegisterType<User>();
-            builder.RegisterType<IMyService, MyService>();
+            builder.RegisterType<User>();
+            builder.RegisterType<IMyService, MyService>(InstanceType.AbsoluteSingle);
+            builder.RegisterType<IMyService2, MyService>(InstanceType.AbsoluteSingle);
 
             IContainer container = builder.Build();
 
@@ -28,6 +30,10 @@ namespace ConsoleAppTest
 
             var service = container.Resolve<IMyService>();
             service.Send("hahahha");
+            service.Send("hahahha2222");
+
+            var service2 = container.Resolve<IMyService2>();
+            service2.Read();
 
             Console.ReadKey();
         }

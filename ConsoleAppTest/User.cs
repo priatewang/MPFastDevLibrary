@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleAppTest
 {
+    []
     public class User
     {
 
@@ -30,10 +31,23 @@ namespace ConsoleAppTest
         void Send(string msg);
     }
 
-    public class MyService : IMyService
+
+    public interface IMyService2
     {
+        void Read();
+    }
+
+    public class MyService : IMyService,IMyService2
+    {
+        int num = 0;
+        public void Read()
+        {
+            Console.WriteLine("use num: " + num);
+        }
+
         public void Send(string msg)
         {
+            num++;
             Console.WriteLine($" User MyService Send  {msg}....");
         }
     }

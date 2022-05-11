@@ -66,10 +66,18 @@ namespace MPFastDevLibrary.Ioc
             ID = source.GetHashCode();
             TargetID = target.GetHashCode();
             ServiceType = iocType;
-            if (ServiceType == InstanceType.Singleton)
+            switch (ServiceType)
             {
+                case InstanceType.Normal:
+                    break;
+                case InstanceType.Singleton:
+                case InstanceType.AbsoluteSingle:
                 Instance = CreateInstance(target);
+                    break;
+                default:
+                    break;
             }
+          
         }
 
         public object GetService(IServiceCollection descriptors)
