@@ -29,17 +29,27 @@ namespace MPFastDevLibrary.Ioc
 
     public class AutoIocAttribute : Attribute
     {
-        public InstanceType InstanceType { get; set; }
+        public InstanceType Mode { get; set; }
 
         /// <summary>
         /// 接口服务对应实现类
         /// </summary>
         public Type RelationClassType { get; set; }
 
-        public AutoIocAttribute(InstanceType iocType=InstanceType.Normal)
+        public AutoIocAttribute()
         {
-            InstanceType = iocType;
-          
+
+        }
+
+        public AutoIocAttribute(InstanceType mode=InstanceType.Normal)
+        {
+            Mode = mode;
+        }
+
+        public AutoIocAttribute(Type type,InstanceType mode=InstanceType.Normal)
+        {
+            RelationClassType = type;
+            Mode = mode;
         }
     }
 }

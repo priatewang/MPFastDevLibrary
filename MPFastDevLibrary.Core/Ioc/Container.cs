@@ -42,7 +42,7 @@ namespace MPFastDevLibrary.Ioc
         public TService Get<TService>()
         {
             int id = typeof(TService).GetHashCode();
-            return CastInstance<TService>(_serviceDescriptors[id].GetService(_serviceDescriptors));
+            return CastInstance<TService>(_serviceDescriptors[id]?.GetService(_serviceDescriptors));
         }
 
         public TService Resolve<TService>()

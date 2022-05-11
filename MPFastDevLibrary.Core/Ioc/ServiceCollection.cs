@@ -24,7 +24,14 @@ namespace MPFastDevLibrary.Ioc
         {
             get
             {
-               return _descriptors[index];
+                if (_descriptors.ContainsKey(index))
+                {
+                    return _descriptors[index];
+                }
+                else
+                {
+                    return null;
+                }
             }
 
             set

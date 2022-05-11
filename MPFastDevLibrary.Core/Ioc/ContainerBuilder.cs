@@ -16,6 +16,9 @@ namespace MPFastDevLibrary.Ioc
 
         IServiceCollection serviceDescriptors;
 
+        /// <summary>
+        /// 自动加载程序集中需要注册的对象
+        /// </summary>
         public void AutoRegisterIoc()
         {
             var assembies = AppDomain.CurrentDomain.GetAssemblies();
@@ -45,9 +48,22 @@ namespace MPFastDevLibrary.Ioc
                 {
                     if (IsHaveAutoIocAttribute(Attribute.GetCustomAttributes(it, true)))
                     {
-                        Attribute attribute = Attribute.GetCustomAttribute(it, typeof(AutoIocAttribute));
-
                         //处理ioc自动注册
+                        AutoIocAttribute attribute = (AutoIocAttribute)Attribute.GetCustomAttribute(it, typeof(AutoIocAttribute));
+                        if (attribute.RelationClassType == null)
+                        {
+                            serviceDescriptors.Add(new ServiceDescriptor(it, attribute.Mode));
+                        }
+                        else
+                        {
+                            serviceDescriptors.Add(new ServiceDescriptor(it, attribute.RelationClassType, attribute.Mode));
+                            if (attribute.Mode==InstanceType.AbsoluteSingle)
+                            {
+                                AbsoluteSingleRegister(attribute.RelationClassType);
+
+                            }
+                        }
+                        
 
                     }
 
@@ -75,10 +91,14 @@ namespace MPFastDevLibrary.Ioc
             if (type == InstanceType.AbsoluteSingle)
             {
                 //如果为绝对唯一，为TService添加唯一服务对象
-                int id = typeof(TService).GetHashCode();
-                serviceDescriptors.Add(new ServiceDescriptor(typeof(TService), type));
-
+                AbsoluteSingleRegister(typeof(TService));
             }
+        }
+
+        private void AbsoluteSingleRegister(Type type)
+        {
+            serviceDescriptors.Add(new ServiceDescriptor(type, InstanceType.AbsoluteSingle));
+
         }
 
 

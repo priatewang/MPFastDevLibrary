@@ -7,6 +7,7 @@
 // 功能描述：
 // 使用说明：
 ----------------------------------------------------------------*/
+using MPFastDevLibrary.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleAppTest
 {
-    []
+    [AutoIoc]
     public class User
     {
 
@@ -26,12 +27,14 @@ namespace ConsoleAppTest
     }
 
 
+    [AutoIoc(Mode =InstanceType.AbsoluteSingle,RelationClassType =typeof(MyService))]
     public interface IMyService
     {
         void Send(string msg);
     }
 
 
+    [AutoIoc(Mode =InstanceType.AbsoluteSingle,RelationClassType =typeof(MyService))]
     public interface IMyService2
     {
         void Read();
