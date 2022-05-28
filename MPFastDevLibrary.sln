@@ -17,9 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wcf", "Wcf", "{A442EE48-461
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MP.Common_Example", "MP.Common_Example\MP.Common_Example.csproj", "{08D68E7D-C914-456F-A837-AE629688C103}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTest", "ConsoleAppTest\ConsoleAppTest.csproj", "{BD0D19E3-C9F8-4D22-9B17-4DA5D321ECCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppTest", "ConsoleAppTest\ConsoleAppTest.csproj", "{BD0D19E3-C9F8-4D22-9B17-4DA5D321ECCE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F91A0770-4A3F-4D9A-9F5A-B9EC28701286}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPFastDevLibrary.Mvvm", "MPFastDevLibrary.Mvvm\MPFastDevLibrary.Mvvm.csproj", "{3A748DF0-D4C9-492D-8BD0-78CCD8062508}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{BD0D19E3-C9F8-4D22-9B17-4DA5D321ECCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD0D19E3-C9F8-4D22-9B17-4DA5D321ECCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD0D19E3-C9F8-4D22-9B17-4DA5D321ECCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A748DF0-D4C9-492D-8BD0-78CCD8062508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A748DF0-D4C9-492D-8BD0-78CCD8062508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A748DF0-D4C9-492D-8BD0-78CCD8062508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A748DF0-D4C9-492D-8BD0-78CCD8062508}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

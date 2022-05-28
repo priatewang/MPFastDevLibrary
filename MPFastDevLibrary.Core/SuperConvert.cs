@@ -1,13 +1,4 @@
-﻿/*----------------------------------------------------------------
-// 创建时间：2022/5/28 14:47:19
-// 开发者： WQ
-// 文件名： SuperConvert
-// CLR版本：4.0.30319.42000
-// 命名空间：MPFastDevLibrary
-// 功能描述：
-// 使用说明：
-----------------------------------------------------------------*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MPFastDevLibrary
 {
+    /// <summary>
+    /// 快速转换类型
+    /// </summary>
     public class SuperConvert
     {
         /// <summary>

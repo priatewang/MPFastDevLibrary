@@ -1,11 +1,11 @@
 ﻿//#define IOCTEST
-#define XLH
+//#define XLH
 using MP.Common_Example;
 using System;
 using System.Reflection;
 using MPFastDevLibrary.Ioc;
 using MPFastDevLibrary.Common;
-
+using MPFastDevLibrary.Mvvm;
 
 namespace ConsoleAppTest
 {
@@ -62,6 +62,10 @@ namespace ConsoleAppTest
             Console.WriteLine($"t1---id:{t2.Id};name:{t2.Name}");
 #endif
             #endregion
+
+            //BaseViewModel model = new BaseViewModel();
+            BaseViewModel.SetUINameSapce("");
+
 
             Console.ReadKey();
         }
