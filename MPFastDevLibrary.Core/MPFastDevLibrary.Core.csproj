@@ -6,6 +6,16 @@
     <Description>my fast development platform.</Description>
     <AssemblyName>MPFastDevLibrary.Core</AssemblyName>
     <RootNamespace>MPFastDevLibrary</RootNamespace>
+    <Version>1.0.0.1</Version>
+    <Authors>Piratewang</Authors>
+    <Company>CompanyPiratewang</Company>
+    <Product>MPFastDevPlatform</Product>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright ©  2022</Copyright>
   </PropertyGroup>
 
 </Project>
