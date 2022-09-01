@@ -14,7 +14,7 @@ namespace MPFastDevLibrary.Common
     public static class EnumHelper
     {
         /// <summary>
-        /// 获取枚举项的字符串集合 
+        /// 获取枚举项的字符串集合
         /// </summary>
         /// <typeparam name="T">枚举类型</typeparam>
         /// <returns></returns>
