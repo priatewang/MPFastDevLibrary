@@ -9,6 +9,10 @@ using System.Xml.Serialization;
 
 namespace MPFastDevLibrary.Common
 {
+
+    /// <summary>
+    /// 序列化辅助类，二进制和xml的序列化和反序列化
+    /// </summary>
     public class SerializableHelper
     {
         /// <summary>
