@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MPFastDevLibrary
+namespace MPFastDevLibrary.Common
 {
     /// <summary>
     /// 快速转换类型
