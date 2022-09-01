@@ -32,5 +32,21 @@ namespace MPFastDevLibrary.Common
             return result;
         }
 
+        /// <summary>
+        /// 属性映射，同类快速拷贝，不支持复杂类
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="target"></param>
+        /// <param name="source"></param>
+        public static void Mapping<T>(ref T target, T source)
+        {
+
+            foreach (PropertyInfo info in typeof(T).GetProperties())
+            {
+                info.SetValue(target, info.GetValue(source));
+            }
+           
+        }
+
     }
 }

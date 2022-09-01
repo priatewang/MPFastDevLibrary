@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace MPFastDevLibrary.Common
 {
     /// <summary>
-    /// 枚举转换
+    /// 枚举帮助类
     /// </summary>
     public static class EnumHelper
     {
