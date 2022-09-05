@@ -1,22 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net452;net46;net5.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net45;net452;net46;net5.0;net5.0-windows;net6.0</TargetFrameworks>
     <Authors>priatewang</Authors>
     <Description>my fast development platform.</Description>
     <AssemblyName>MPFastDevLibrary.Core</AssemblyName>
     <RootNamespace>MPFastDevLibrary</RootNamespace>
-    <Version>1.0.0.3</Version>
+    <Version>1.0.0.4</Version>
     <Authors>Piratewang</Authors>
     <Company>CompanyPiratewang</Company>
     <Product>MPFastDevPlatform</Product>
-    <AssemblyVersion>1.0.0.3</AssemblyVersion>
-    <FileVersion>1.0.0.3</FileVersion>
+    <AssemblyVersion>1.0.0.4</AssemblyVersion>
+    <FileVersion>1.0.0.4</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright ©  2022</Copyright>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

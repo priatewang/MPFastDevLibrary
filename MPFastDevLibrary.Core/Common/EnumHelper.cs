@@ -75,5 +75,21 @@ namespace MPFastDevLibrary.Common
             return (T)Enum.Parse(typeof(T), field.Name);
         }
 
+
+        /// <summary>
+        /// 将描述转成枚举
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <param name="desc"></param>
+        /// <returns></returns>
+        public static object EnumConvertByDescription(Type type,string desc)
+        {
+            var fields = type.GetFields(BindingFlags.Static | BindingFlags.Public);
+            var field = fields.FirstOrDefault(w => (w.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute)?.Description == desc);
+            if (field == null)
+                return null;
+            return Enum.Parse(type, field.Name);
+        }
+
     }
 }
