@@ -35,5 +35,37 @@ namespace MPFastDevLibrary.Common
         }
 
 
+        /// <summary>
+        /// byte数组转为16进制两位字符串，默认以“-”分割
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="split"></param>
+        /// <returns></returns>
+        public static string ByteArrayToStringHex(byte[] data,string split="-")
+        {
+            if (split=="-")
+            {
+                return BitConverter.ToString(data);
+            }
+            return BitConverter.ToString(data).Replace("-", split);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="split"></param>
+        /// <returns></returns>
+        public static byte[] HexStringToBtyeArray(string data,char split='-')
+        {
+            var values = data.Split(split);
+            byte[] result = new byte[values.Length];
+            for (int i = 0; i < values.Length; i++)
+            {
+                result[i] = Convert.ToByte(values[i], 16);
+            }
+            return result;
+        }
+
     }
 }
