@@ -64,8 +64,17 @@ namespace ConsoleAppTest
             #endregion
 
             //BaseViewModel model = new BaseViewModel();
-            BaseViewModel.SetUINameSapce("");
-
+            //BaseViewModel.SetUINameSapce("");
+            var t1 = DateTime.Now.ToUniversalTime();
+            Console.WriteLine(t1.ToString());
+            var ts = DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            long s = (long)ts.TotalMilliseconds;
+            Console.WriteLine(s);
+            var t2 = DateTime.SpecifyKind(new DateTime(1970, 1, 1, 8, 0, 0, 0), DateTimeKind.Local);
+            Console.WriteLine(t2.ToString());
+            //var t2 = new DateTime(1970, 1, 1, 8, 0, 0, 0);
+          var t3=  t2.AddMilliseconds(s);
+            Console.WriteLine(t3.ToString());
 
             Console.ReadKey();
         }

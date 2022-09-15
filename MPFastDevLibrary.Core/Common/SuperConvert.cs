@@ -67,5 +67,30 @@ namespace MPFastDevLibrary.Common
             return result;
         }
 
+
+        /// <summary>
+        /// DateTime类转Unix时间戳
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public static long DateTimeToTimeStamp(DateTime dateTime)
+        {
+            var ts = dateTime.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+
+            return (long)ts.TotalMilliseconds;
+        }
+
+        /// <summary>
+        /// Unix时间戳转DateTime
+        /// </summary>
+        /// <param name="timeStamp"></param>
+        /// <returns></returns>
+        public static DateTime TimeStampToDateTime(long timeStamp)
+        {
+            var t2 = DateTime.SpecifyKind(new DateTime(1970, 1, 1, 8, 0, 0, 0), DateTimeKind.Local);
+            var t3 = t2.AddMilliseconds(s);
+            return t3;
+        }
+
     }
 }
