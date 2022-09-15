@@ -41,9 +41,9 @@ namespace MPFastDevLibrary.Common
         /// <param name="data"></param>
         /// <param name="split"></param>
         /// <returns></returns>
-        public static string ByteArrayToStringHex(byte[] data,string split="-")
+        public static string ByteArrayToStringHex(byte[] data, string split = "-")
         {
-            if (split=="-")
+            if (split == "-")
             {
                 return BitConverter.ToString(data);
             }
@@ -56,7 +56,7 @@ namespace MPFastDevLibrary.Common
         /// <param name="data"></param>
         /// <param name="split"></param>
         /// <returns></returns>
-        public static byte[] HexStringToBtyeArray(string data,char split='-')
+        public static byte[] HexStringToBtyeArray(string data, char split = '-')
         {
             var values = data.Split(split);
             byte[] result = new byte[values.Length];
@@ -87,8 +87,8 @@ namespace MPFastDevLibrary.Common
         /// <returns></returns>
         public static DateTime TimeStampToDateTime(long timeStamp)
         {
-            var t2 = DateTime.SpecifyKind(new DateTime(1970, 1, 1, 8, 0, 0, 0), DateTimeKind.Local);
-            var t3 = t2.AddMilliseconds(s);
+            var t2 = new DateTime(1970, 1, 1, 8, 0, 0, 0);
+            var t3 = t2.AddMilliseconds(timeStamp);
             return t3;
         }
 
