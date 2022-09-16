@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net452;net46;net5.0;net5.0-windows;net6.0</TargetFrameworks>
+    <TargetFrameworks>net45;net452;net46;net462;net5.0;net6.0</TargetFrameworks>
     <Authors>priatewang</Authors>
     <Description>my fast development platform.</Description>
     <AssemblyName>MPFastDevLibrary.Core</AssemblyName>
