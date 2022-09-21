@@ -10,6 +10,9 @@ using System.Xml.Linq;
 
 namespace MPFastDevLibrary.Common
 {
+    /// <summary>
+    /// Csv读写帮助类，支持
+    /// </summary>
     public class CsvHelper
     {
         /// <summary>
@@ -216,6 +219,16 @@ namespace MPFastDevLibrary.Common
             return lines;
         }
 
+
+        public static void ReadCsvUseAction(string path, Action action, bool hasTitle = false)
+        {
+            var lines = ReadCsv(path, hasTitle);
+            foreach (var item in lines)
+            {
+                action?.Invoke();
+            }
+
+        }
 
     }
 }

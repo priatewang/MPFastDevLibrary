@@ -6,6 +6,8 @@ using System.Reflection;
 using MPFastDevLibrary.Ioc;
 using MPFastDevLibrary.Common;
 using MPFastDevLibrary.Mvvm;
+using MPFastDevLibrary.EventMessage;
+using System.Threading.Tasks;
 
 namespace ConsoleAppTest
 {
@@ -63,6 +65,8 @@ namespace ConsoleAppTest
 #endif
             #endregion
 
+            #region 时间戳转换
+#if SJC
             //BaseViewModel model = new BaseViewModel();
             //BaseViewModel.SetUINameSapce("");
             var t1 = DateTime.Now.ToUniversalTime();
@@ -75,8 +79,45 @@ namespace ConsoleAppTest
             //var t2 = new DateTime(1970, 1, 1, 8, 0, 0, 0);
           var t3=  t2.AddMilliseconds(s);
             Console.WriteLine(t3.ToString());
+#endif
+            #endregion
+
+            Messager.Default.Subscribe("w1", Write1);
+            Task.Run(() =>
+            {
+                for (int i = 0; i < 1000; i++)
+                {
+                    Messager.Default.Publish("w1", "task1:" + i);
+                }
+            });
+            Task.Run(() =>
+            {
+                for (int i = 0; i < 1000; i++)
+                {
+                    Messager.Default.Publish("w1", "task2:" + (i + 1000));
+                }
+            });
+            Task.Run(() =>
+            {
+                for (int i = 0; i < 1000; i++)
+                {
+                    Messager.Default.Publish("w1", "task3:" + (i * 1000));
+                }
+            });
+
 
             Console.ReadKey();
         }
+        static void Write1(object o)
+        {
+            Console.WriteLine("write1:" + o.ToString());
+
+        }
     }
+
+
+
+
+
+
 }
