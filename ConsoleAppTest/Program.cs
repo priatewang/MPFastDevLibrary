@@ -81,6 +81,9 @@ namespace ConsoleAppTest
             Console.WriteLine(t3.ToString());
 #endif
             #endregion
+            #region Task测试
+
+#if false
 
             Messager.Default.Subscribe("w1", Write1);
             Task.Run(() =>
@@ -104,7 +107,9 @@ namespace ConsoleAppTest
                     Messager.Default.Publish("w1", "task3:" + (i * 1000));
                 }
             });
+#endif
 
+            #endregion
 
             Console.ReadKey();
         }

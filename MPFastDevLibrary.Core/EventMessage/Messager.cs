@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace MPFastDevLibrary.EventMessage
 {
     /// <summary>
-    /// 事件集合器-实现类
+    /// 事件聚合器-实现类
     /// </summary>
     public class Messager : IMessager
     {
