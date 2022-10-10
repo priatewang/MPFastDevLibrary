@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -71,6 +72,21 @@ namespace MPFastDevLibrary.Common
             var fields = typeof(T).GetFields(BindingFlags.Static | BindingFlags.Public);
             var field = fields.FirstOrDefault(w => (w.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute)?.Description == desc);
             if (field == null)
+                return default(T);
+            return (T)Enum.Parse(typeof(T), field.Name);
+        }
+
+        /// <summary>
+        /// 通过名称转换成枚举
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumStr">枚举的名称</param>
+        /// <returns></returns>
+        public static T ConvertToEnum<T>(string enumStr)
+        {
+            var fields = typeof(T).GetFields(BindingFlags.Static | BindingFlags.Public);
+           var field= fields.FirstOrDefault(w=>w.Name == enumStr);
+            if (field==null)
                 return default(T);
             return (T)Enum.Parse(typeof(T), field.Name);
         }

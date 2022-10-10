@@ -54,5 +54,13 @@ namespace MPFastDevLibrary.Common.Tests
             var em = EnumHelper.EnumConvertByDescription<MyEnum>("测试2");
             Assert.AreEqual(MyEnum.Test2,em);
         }
+
+
+        [TestMethod()]
+        public void ConvertToEnumTest()
+        {
+            var em = EnumHelper.ConvertToEnum<MyEnum>("Test2");
+            Assert.AreEqual(MyEnum.Test2, em);
+        }
     }
 }
