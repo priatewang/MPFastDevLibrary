@@ -9,10 +9,16 @@ namespace PakeageTest
 
     public class User
     {
+        public IMyService service { get; set; }
+        public User(IMyService myService)
+        {
+            service=myService;
+        }
 
         public void Send()
         {
             Console.WriteLine(" User Send  ok....");
+            service.Send("User Service Send");
         }
     }
 
