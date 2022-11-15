@@ -1,0 +1,29 @@
+﻿<Window
+    x:Class="MPFastDevLibrary.WinApi.WPF.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MPFastDevLibrary.WinApi.WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+        <TextBlock
+            Margin="66,56,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text="TextBlock"
+            TextWrapping="Wrap" />
+        <TextBox
+            Width="120"
+            Margin="142,55,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            IsReadOnly="True"
+            Text="TextBox"
+            TextWrapping="Wrap" KeyDown="TextBox_KeyDown" KeyUp="TextBox_KeyUp" />
+
+    </Grid>
+</Window>
