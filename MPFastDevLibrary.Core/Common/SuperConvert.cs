@@ -67,6 +67,52 @@ namespace MPFastDevLibrary.Common
             return result;
         }
 
+        /// <summary>
+        /// Byte数组转double数组
+        /// </summary>
+        /// <param name="bytes">传入Byte数组</param>
+        /// <param name="length">double数组长度</param>
+        /// <param name="index">Byte数组起始位置，默认为0</param>
+        /// <param name="round">四舍五入小数点，默认为0不处理</param>
+        /// <returns>double数组</returns>
+        public static double[] ToDoubleArray(byte[] bytes, int length, int index = 0, int round = 0)
+        {
+            int typeLen = sizeof(double);
+            int len = (bytes.Length - index) / typeLen;
+            if (len < length)
+            {
+                length = len;
+            }
+            double[] result = new double[len];
+            for (int i = 0; i < length; i++)
+            {
+                result[i] = BitConverter.ToDouble(bytes, index + typeLen * i);
+                if (round != 0)
+                {
+                    result[i] = Math.Round(result[i]);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// double数组转Byte数组
+        /// </summary>
+        /// <param name="doubles">需要转换的double数组</param>
+        /// <returns></returns>
+        public static byte[] ToByteArray(double[] doubles)
+        {
+            int typeLen = sizeof(double);
+            byte[] result = new byte[doubles.Length * typeLen];
+            for (int i = 0; i < doubles.Length; i++)
+            {
+                byte[] bytes = BitConverter.GetBytes(doubles[i]);
+                bytes.CopyTo(result, i * typeLen);
+            }
+            return result;
+        }
+
 
         /// <summary>
         /// DateTime类转Unix时间戳
