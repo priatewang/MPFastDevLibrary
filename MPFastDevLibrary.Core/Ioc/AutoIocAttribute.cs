@@ -9,7 +9,7 @@ namespace MPFastDevLibrary.Ioc
     /// <summary>
     /// 实例类型
     /// </summary>
-    public enum InstanceType
+    public enum LifeTimeType
     {
         /// <summary>
         /// 正常模式,多例
@@ -29,7 +29,10 @@ namespace MPFastDevLibrary.Ioc
 
     public class AutoIocAttribute : Attribute
     {
-        public InstanceType Mode { get; set; }
+        /// <summary>
+        /// 生命周期类型
+        /// </summary>
+        public LifeTimeType Mode { get; set; }
 
         /// <summary>
         /// 接口服务对应实现类
@@ -41,12 +44,12 @@ namespace MPFastDevLibrary.Ioc
 
         }
 
-        public AutoIocAttribute(InstanceType mode=InstanceType.Normal)
+        public AutoIocAttribute(LifeTimeType mode=LifeTimeType.Normal)
         {
             Mode = mode;
         }
 
-        public AutoIocAttribute(Type type,InstanceType mode=InstanceType.Normal)
+        public AutoIocAttribute(Type type,LifeTimeType mode=LifeTimeType.Normal)
         {
             RelationClassType = type;
             Mode = mode;

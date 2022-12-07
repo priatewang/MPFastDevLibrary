@@ -37,7 +37,7 @@ namespace MPFastDevLibrary.Ioc
         /// <summary>
         /// 类型
         /// </summary>
-        public InstanceType ServiceType { get; set; }
+        public LifeTimeType ServiceType { get; set; }
 
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace MPFastDevLibrary.Ioc
         public object Instance { get; set; }
 
 
-        public ServiceDescriptor(Type type, InstanceType iocType = InstanceType.Normal)
+        public ServiceDescriptor(Type type, LifeTimeType iocType = LifeTimeType.Normal)
             : this(type, type, iocType)
         {
 
@@ -59,7 +59,7 @@ namespace MPFastDevLibrary.Ioc
         /// <param name="target"></param>
         /// <param name="id"></param>
         /// <param name="iocType"></param>
-        public ServiceDescriptor(Type source, Type target, InstanceType iocType = InstanceType.Normal)
+        public ServiceDescriptor(Type source, Type target, LifeTimeType iocType = LifeTimeType.Normal)
         {
             Source = source;
             TargetService = target;
@@ -68,10 +68,10 @@ namespace MPFastDevLibrary.Ioc
             ServiceType = iocType;
             switch (ServiceType)
             {
-                case InstanceType.Normal:
+                case LifeTimeType.Normal:
                     break;
-                case InstanceType.Singleton:
-                case InstanceType.AbsoluteSingle:
+                case LifeTimeType.Singleton:
+                case LifeTimeType.AbsoluteSingle:
                 Instance = CreateInstance(target);
                     break;
                 default:
@@ -84,11 +84,11 @@ namespace MPFastDevLibrary.Ioc
         {
             switch (ServiceType)
             {
-                case InstanceType.Normal:
+                case LifeTimeType.Normal:
                     return CreateInstance(TargetService);
-                case InstanceType.Singleton:
+                case LifeTimeType.Singleton:
                     return Instance;
-                case InstanceType.AbsoluteSingle:
+                case LifeTimeType.AbsoluteSingle:
                     if (TargetID == ID)
                     {
                         return Instance;

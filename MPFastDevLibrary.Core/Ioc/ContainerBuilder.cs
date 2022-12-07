@@ -57,7 +57,7 @@ namespace MPFastDevLibrary.Ioc
                         else
                         {
                             serviceDescriptors.Add(new ServiceDescriptor(it, attribute.RelationClassType, attribute.Mode));
-                            if (attribute.Mode==InstanceType.AbsoluteSingle)
+                            if (attribute.Mode==LifeTimeType.AbsoluteSingle)
                             {
                                 AbsoluteSingleRegister(attribute.RelationClassType);
 
@@ -74,7 +74,7 @@ namespace MPFastDevLibrary.Ioc
             }
         }
 
-        public void RegisterType<TService>(InstanceType type = InstanceType.Normal) where TService : class
+        public void RegisterType<TService>(LifeTimeType type = LifeTimeType.Normal) where TService : class
         {
             serviceDescriptors.Add(new ServiceDescriptor(typeof(TService), type));
         }
@@ -85,10 +85,10 @@ namespace MPFastDevLibrary.Ioc
         /// <typeparam name="IService">源类型（接口）</typeparam>
         /// <typeparam name="TService">目标类型（类）</typeparam>
         /// <param name="type"></param>
-        public void RegisterType<IService, TService>(InstanceType type = InstanceType.Normal) where TService : class
+        public void RegisterType<IService, TService>(LifeTimeType type = LifeTimeType.Normal) where TService : class
         {
             serviceDescriptors.Add(new ServiceDescriptor(typeof(IService), typeof(TService), type));
-            if (type == InstanceType.AbsoluteSingle)
+            if (type == LifeTimeType.AbsoluteSingle)
             {
                 //如果为绝对唯一，为TService添加唯一服务对象
                 AbsoluteSingleRegister(typeof(TService));
@@ -97,7 +97,7 @@ namespace MPFastDevLibrary.Ioc
 
         private void AbsoluteSingleRegister(Type type)
         {
-            serviceDescriptors.Add(new ServiceDescriptor(type, InstanceType.AbsoluteSingle));
+            serviceDescriptors.Add(new ServiceDescriptor(type, LifeTimeType.AbsoluteSingle));
 
         }
 
