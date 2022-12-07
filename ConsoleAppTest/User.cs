@@ -27,14 +27,14 @@ namespace ConsoleAppTest
     }
 
 
-    [AutoIoc(Mode =InstanceType.AbsoluteSingle,RelationClassType =typeof(MyService))]
+    [AutoIoc(Mode =LifeTimeType.AbsoluteSingle,RelationClassType =typeof(MyService))]
     public interface IMyService
     {
         void Send(string msg);
     }
 
 
-    [AutoIoc(Mode =InstanceType.AbsoluteSingle,RelationClassType =typeof(MyService))]
+    [AutoIoc(Mode =LifeTimeType.AbsoluteSingle,RelationClassType =typeof(MyService))]
     public interface IMyService2
     {
         void Read();
