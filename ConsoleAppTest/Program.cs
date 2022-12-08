@@ -122,18 +122,27 @@ namespace ConsoleAppTest
             {
                 DeviceValues.Add((10000001 + i).ToString(), false);
             }
-            for (int i = 0; i < 100; i++)
+
             {
-                var str = "10000001,[10000002|10000003],[(10000004,10000005)|(10000006,[(10000007,10000008)|(10000009,10000010)|(10000011,10000012,110000012)|(10000013,10000014,10000015)])]";
+                var str = "10000001,[10000002|10000003]";
+                SplitString(str);
+            }
+
+            Stopwatch sw = new Stopwatch();
+            sw.Restart();
+            for (int i = 0; i < 10000; i++)
+            {
+                var str = "10000001,[10000002|10000003],[(10000004,10000005)|(10000006,[(10000007,10000008)|(10000009,10000010)|(10000011,10000012,10000013)|(10000014,10000015,10000016)])]";
                 //Console.WriteLine(str); 
                 //Console.WriteLine(str);
-                Stopwatch sw = new Stopwatch();
-                sw.Restart();
+               
                 SplitString(str);
-                sw.Stop();
-                TimeSpan timespan = sw.Elapsed;
-                Console.WriteLine("程序耗时:'{0}'ms", timespan.TotalMilliseconds);
+               
             }
+            sw.Stop();
+            TimeSpan timespan = sw.Elapsed;
+            Console.WriteLine("程序耗时:'{0}'ms", timespan.TotalMilliseconds);
+           
 
             //var str = "10000001,[10000002|10000003],[(10000004,10000005)|(10000006,[(10000007,10000008)|(10000009,10000010)|(10000011,10000012,110000012)|(10000013,10000014,10000015)])]";
             //Stopwatch sw = new Stopwatch();
@@ -248,86 +257,6 @@ namespace ConsoleAppTest
             return res;
         }
 
-        static bool SplitString2(string str, char sign = ',')
-        {
-            bool res = false;
-            bool isAnd = sign == ',';
-            Regex regex = new Regex(",(?=[^\\)]*(?:\\(|$))");
-            if (!isAnd)
-            {
-                regex = new Regex(@"\|(?=[^\)]*(?:\(|$))");
-            }
-            var values = regex.Split(str);
-            List<string> list = new List<string>();
-            //拆分字符串
-            string tmp = "";
-            for (int i = 0; i < values.Length; i++)
-            {
-                tmp += values[i];
-                if (Regex.IsMatch(tmp, "^[0-9]*$"))
-                {
-                    list.Add(values[i]);
-                    tmp = "";
-                    continue;
-                }
-                if (MidBracketMatch(tmp) == 0 && SmallBracketMatch(tmp) == 0)
-                {
-
-                    list.Add(tmp);
-                    tmp = "";
-                    continue;
-
-                }
-                tmp += sign;
-            }
-            Console.WriteLine("进入的字符串: " + str);
-            foreach (var item in list)
-            {
-                Console.Write(item + "  ");
-            }
-            Console.WriteLine();
-            Console.WriteLine("--------处理完成---------");
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (Regex.IsMatch(list[i], "^[0-9]*$"))
-                {
-                    if (isAnd)
-                    {
-                        res = res && GetValue(list[i]);
-
-                    }
-                    else
-                    {
-                        res = res || GetValue(list[i]);
-                    }
-                    continue;
-                }
-                else
-                {
-                    var value = list[i].Substring(1, list[i].Length - 2);
-                    bool subRes = false;
-                    if (list[i][0] == '[')
-                    {
-                        subRes = SplitString2(value, '|');
-                    }
-                    else
-                    {
-                        subRes = SplitString2(value, ',');
-                    }
-                    if (isAnd)
-                    {
-                        res = res && subRes;
-
-                    }
-                    else
-                    {
-                        res = res || subRes;
-                    }
-                }
-            }
-            return res;
-        }
-
         /// <summary>
         /// 判断中括号是否成对
         /// </summary>
@@ -335,7 +264,8 @@ namespace ConsoleAppTest
         /// <returns></returns>
         static int MidBracketMatch(string str)
         {
-            return str.Count(x => x == '[') - str.Count(x => x == ']');
+            return CharCount(str, '[') - CharCount(str, ']');
+            //return str.Count(x => x == '[') - str.Count(x => x == ']');
         }
 
         /// <summary>
@@ -345,7 +275,14 @@ namespace ConsoleAppTest
         /// <returns></returns>
         static int SmallBracketMatch(string str)
         {
-            return str.Count(x => x == '(') - str.Count(x => x == ')');
+           // return str.Count(x => x == '(') - str.Count(x => x == ')');
+           return CharCount(str,'(')-CharCount(str,')');
+        }
+
+        static int CharCount(string str,char c)
+        {
+           
+            return str.Split(c).Length - 1;
         }
 
         /// <summary>
