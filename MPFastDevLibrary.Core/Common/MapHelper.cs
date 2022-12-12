@@ -48,5 +48,17 @@ namespace MPFastDevLibrary.Common
            
         }
 
+        /// <summary>
+        /// 集合映射，用于同属性名的不同类快速拷贝
+        /// </summary>
+        /// <typeparam name="R">返回类型</typeparam>
+        /// <typeparam name="T">输入类型</typeparam>
+        /// <param name="list">输入集合</param>
+        /// <returns></returns>
+        public static IEnumerable<R> Mapping<R, T>(IEnumerable<T> list)
+        {
+            return list.Select(x => Mapping<R, T>(x));
+        }
+
     }
 }
