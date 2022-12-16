@@ -118,6 +118,11 @@ namespace ConsoleAppTest
 #endif
 
             #endregion
+
+            #region 电路串并联
+
+#if DL
+
             for (int i = 0; i < 20; i++)
             {
                 DeviceValues.Add((10000001 + i).ToString(), false);
@@ -142,7 +147,11 @@ namespace ConsoleAppTest
             sw.Stop();
             TimeSpan timespan = sw.Elapsed;
             Console.WriteLine("程序耗时:'{0}'ms", timespan.TotalMilliseconds);
-           
+#endif
+
+            #endregion
+
+            GenericTest genericTest=new GenericTest();
 
             //var str = "10000001,[10000002|10000003],[(10000004,10000005)|(10000006,[(10000007,10000008)|(10000009,10000010)|(10000011,10000012,110000012)|(10000013,10000014,10000015)])]";
             //Stopwatch sw = new Stopwatch();
