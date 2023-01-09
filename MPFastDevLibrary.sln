@@ -29,9 +29,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PakeageTest", "PakeageTest\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Win", "Win", "{A86E62EF-A6A1-407F-9B3F-C3A6F9ED1C25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPFastDevLibrary.Core.Windows", "MPFastDevLibrary.Core.Windows\MPFastDevLibrary.Core.Windows.csproj", "{1DA99516-D1FF-4EB2-8172-4309E87C64CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPFastDevLibrary.Core.Windows", "MPFastDevLibrary.Core.Windows\MPFastDevLibrary.Core.Windows.csproj", "{1DA99516-D1FF-4EB2-8172-4309E87C64CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPFastDevLibrary.WinApi.WPF", "MPFastDevLibrary.WinApi.WPF\MPFastDevLibrary.WinApi.WPF.csproj", "{59FA35D5-A524-401D-B6C5-C6CB3257BF2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPFastDevLibrary.WinApi.WPF", "MPFastDevLibrary.WinApi.WPF\MPFastDevLibrary.WinApi.WPF.csproj", "{59FA35D5-A524-401D-B6C5-C6CB3257BF2C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{4D6D40B0-D036-4FF9-8656-C52FCD7AF3E2}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
