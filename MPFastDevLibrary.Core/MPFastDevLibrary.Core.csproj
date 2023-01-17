@@ -6,12 +6,12 @@
     <Description>my fast development platform.</Description>
     <AssemblyName>MPFastDevLibrary.Core</AssemblyName>
     <RootNamespace>MPFastDevLibrary</RootNamespace>
-    <Version>1.0.0.6</Version>
+    <Version>1.0.1.0</Version>
     <Authors>Piratewang</Authors>
     <Company>CompanyPiratewang</Company>
     <Product>MPFastDevPlatform</Product>
-    <AssemblyVersion>1.0.0.6</AssemblyVersion>
-    <FileVersion>1.0.0.6</FileVersion>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -20,5 +20,12 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <PackageProjectUrl>https://github.com/priatewang/MPFastDevLibrary</PackageProjectUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
