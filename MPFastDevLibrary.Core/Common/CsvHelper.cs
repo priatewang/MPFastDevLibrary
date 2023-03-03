@@ -157,7 +157,7 @@ namespace MPFastDevLibrary.Common
         }
 
         /// <summary>
-        /// 以文件流形式写入DataTable
+        /// 以文件流形式将DataTable写入csv文件
         /// </summary>
         /// <param name="dt"></param>
         /// <param name="path"></param>
@@ -210,7 +210,7 @@ namespace MPFastDevLibrary.Common
         {
             if (!File.Exists(path))
                 return new List<string>();
-
+            
             var lines = File.ReadAllLines(path).ToList();
             if (hasTitle)
             {

@@ -20,3 +20,12 @@ Csv读写帮助类
 支持直接读取行，读写DataTable等
 
 
+## 其他功能类
+###  事件聚合器
+IMessager 接口类
+Messager 实现类
+
+使用：Messager.Default
+方法：
+Subscribe 订阅消息
+Publish	推送消息，触发订阅
