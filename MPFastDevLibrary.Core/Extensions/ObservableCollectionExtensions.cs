@@ -44,6 +44,14 @@ namespace MPFastDevLibrary.Common
             }
         }
 
+        /// <summary>
+        /// 批量删除
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obs"></param>
+        /// <param name="collection"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static bool RemoveRange<T>(this ObservableCollection<T> obs,IEnumerable<T> collection)
         {
             if (obs == null)
@@ -54,6 +62,7 @@ namespace MPFastDevLibrary.Common
             {
                 obs.Remove(item);
             }
+            return true;
         }
 
 
