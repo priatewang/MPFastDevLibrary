@@ -3,7 +3,6 @@
 using MP.Common_Example;
 using System;
 using System.Reflection;
-using MPFastDevLibrary.Ioc;
 using MPFastDevLibrary.Common;
 using MPFastDevLibrary.Mvvm;
 using MPFastDevLibrary.EventMessage;
