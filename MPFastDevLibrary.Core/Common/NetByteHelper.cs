@@ -141,6 +141,7 @@ namespace MPFastDevLibrary.Common
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class ByteTest
     {
-
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+        public int[] MyProperty;
     }
 }

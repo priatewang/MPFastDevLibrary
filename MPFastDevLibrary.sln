@@ -38,6 +38,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTest2", "ConsoleAppTest2\ConsoleAppTest2.csproj", "{13B7BF84-AB51-443D-859F-6502225B6DFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +94,10 @@ Global
 		{59FA35D5-A524-401D-B6C5-C6CB3257BF2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59FA35D5-A524-401D-B6C5-C6CB3257BF2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59FA35D5-A524-401D-B6C5-C6CB3257BF2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13B7BF84-AB51-443D-859F-6502225B6DFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13B7BF84-AB51-443D-859F-6502225B6DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13B7BF84-AB51-443D-859F-6502225B6DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13B7BF84-AB51-443D-859F-6502225B6DFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +111,7 @@ Global
 		{DF57B9E7-58FC-4474-A929-D8B3A1EA80B3} = {F91A0770-4A3F-4D9A-9F5A-B9EC28701286}
 		{1DA99516-D1FF-4EB2-8172-4309E87C64CD} = {A86E62EF-A6A1-407F-9B3F-C3A6F9ED1C25}
 		{59FA35D5-A524-401D-B6C5-C6CB3257BF2C} = {A86E62EF-A6A1-407F-9B3F-C3A6F9ED1C25}
+		{13B7BF84-AB51-443D-859F-6502225B6DFE} = {F91A0770-4A3F-4D9A-9F5A-B9EC28701286}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {83BCD9F2-7C5C-446A-A795-89250BBB21CC}
