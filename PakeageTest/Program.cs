@@ -14,18 +14,24 @@ namespace ConsoleAppTest
             Console.WriteLine("Hello World!");
 
             #region Autofac测试
-            //var builder = new ContainerBuilder();
-            //// builder.RegisterType<MyService>().As<IMyService>();
+            var builder = new ContainerBuilder();
+           // builder.RegisterGeneric(typeof(BaseDAL<>)).As(typeof(IBaseDAL<>));
+            builder.RegisterAssemblyTypes(typeof(UserDAL).Assembly)
+       .Where(t => t.Name.EndsWith("DAL"))
+       .AsImplementedInterfaces()
+       .InstancePerLifetimeScope();
+            // builder.RegisterType<MyService>().As<IMyService>();
             //builder.RegisterType(typeof(User));
             //builder.RegisterType(typeof(MyService)).As(typeof(IMyService));
-            //var container = builder.Build();
-
+            var container = builder.Build();
+            var user = container.Resolve<IUserDAL>();
+            user.Add(new MyUser());
             //var ims = container.Resolve<IMyService>();
-            //var user=container.Resolve<User>();
-
+            //var user = container.Resolve<User>();
             //ims.Send("111");
-
             //user.Send();
+
+
 
             #endregion
 
@@ -52,12 +58,12 @@ namespace ConsoleAppTest
             //#endregion
 
             #region 静态切换
-            IocTestInterface test = new IocTestInterface();
-            test.UseService("切换前");
+            //IocTestInterface test = new IocTestInterface();
+            //test.UseService("切换前");
 
-            _testService = new BService();
+            //_testService = new BService();
 
-            test.UseService("切换后");
+            //test.UseService("切换后");
 
             #endregion
 
