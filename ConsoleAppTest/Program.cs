@@ -1,6 +1,5 @@
 ﻿//#define IOCTEST
 //#define XLH
-using MP.Common_Example;
 using System;
 using System.Reflection;
 using MPFastDevLibrary.Common;
@@ -146,13 +145,8 @@ namespace ConsoleAppTest
             sw.Stop();
             TimeSpan timespan = sw.Elapsed;
             Console.WriteLine("程序耗时:'{0}'ms", timespan.TotalMilliseconds);
-#endif
 
-            #endregion
-
-            GenericTest genericTest=new GenericTest();
-
-            //var str = "10000001,[10000002|10000003],[(10000004,10000005)|(10000006,[(10000007,10000008)|(10000009,10000010)|(10000011,10000012,110000012)|(10000013,10000014,10000015)])]";
+                        //var str = "10000001,[10000002|10000003],[(10000004,10000005)|(10000006,[(10000007,10000008)|(10000009,10000010)|(10000011,10000012,110000012)|(10000013,10000014,10000015)])]";
             //Stopwatch sw = new Stopwatch();
             //sw.Restart();
             //SplitString(str);
@@ -164,7 +158,46 @@ namespace ConsoleAppTest
             //sw.Stop();
             //timespan = sw.Elapsed;
             //Console.WriteLine("程序耗时:'{0}'ms", timespan.TotalMilliseconds);
+
+#endif
+
+            #endregion
+
+            #region 协变逆变
+
+            // GenericTest genericTest =new GenericTest();
+            #endregion
+
+            var tp1 = typeof(TestClass);
+            var tp2 = typeof(int);
+            var tp3 = typeof(string);
+            var tp4 = typeof(Char);
+            Console.WriteLine("IsPrimitive");
+            Console.WriteLine("TestClass:" + tp1.IsPrimitive);
+            Console.WriteLine("int:     " + tp2.IsPrimitive);
+            Console.WriteLine("string:  " + tp3.IsPrimitive);
+            Console.WriteLine("Char:    " + tp4.IsPrimitive);
+
+            Console.WriteLine("IsValueType");
+            Console.WriteLine("TestClass:" + tp1.IsValueType);
+            Console.WriteLine("int:     " + tp2.IsValueType);
+            Console.WriteLine("string:  " + tp3.IsValueType);
+            Console.WriteLine("Char:    " + tp4.IsValueType);
+
+
             Console.ReadKey();
+        }
+
+        static bool TypeIsMyClass(Type type)
+        {
+            if (type.IsPrimitive||type.IsValueType|| type.FullName == typeof(string).FullName|| type.Namespace.StartsWith("System"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         /// <summary>

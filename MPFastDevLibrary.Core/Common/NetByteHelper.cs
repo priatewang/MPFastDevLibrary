@@ -58,13 +58,14 @@ namespace MPFastDevLibrary.Common
         public static Type[] types = new Type[] { typeof(uint), typeof(UInt16), typeof(UInt64), typeof(UInt32) };
 
         /// <summary>
-        /// 小端模式转大端模式
+        /// 属性批量小端模式转大端模式(一层深度)
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static bool LittleToBigEndian<T>(ref T obj) where T : class
+        public static bool LittleToBigEndianSingle<T>(ref T obj) where T : class
         {
+
             var propertys = typeof(T).GetProperties();
             try
             {
@@ -98,12 +99,61 @@ namespace MPFastDevLibrary.Common
         }
 
         /// <summary>
-        /// 小端模式转大端模式
+        /// 属性批量小端模式转大端模式（递归处理）
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static bool LittleToBigEndian(ref object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            var propertys = obj.GetType().GetProperties();
+            try
+            {
+                foreach (var item in propertys)
+                {
+                    if (item.PropertyType == typeof(uint) || item.PropertyType == typeof(int))
+                    {
+                        uint value = (uint)item.GetValue(obj);
+                        item.SetValue(obj, (uint)IPAddress.HostToNetworkOrder((int)value));
+                    }
+                    else if (item.PropertyType == typeof(ushort) || item.PropertyType == typeof(short))
+                    {
+                        ushort value = (ushort)item.GetValue(obj);
+                        item.SetValue(obj, (ushort)System.Net.IPAddress.HostToNetworkOrder((short)value));
+                    }
+                    else if (item.PropertyType == typeof(ulong) || item.PropertyType == typeof(long))
+                    {
+                        ulong value = (ulong)item.GetValue(obj);
+                        item.SetValue(obj, (ulong)System.Net.IPAddress.HostToNetworkOrder((long)value));
+                    }
+                    else if (IsCustomType(item.PropertyType))
+                    {
+                        var value = item.GetValue(obj);
+                        LittleToBigEndian(ref value);
+                        item.SetValue(obj, value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+
+
+            return true;
+        }
+
+        /// <summary>
+        /// 属性批量大端模式转小端模式(一层深度)
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static bool BigToLittleEndian<T>(ref T obj) where T : class
+        public static bool BigToLittleEndianSingle<T>(ref T obj) where T : class
         {
             var propertys = typeof(T).GetProperties();
             try
@@ -129,6 +179,48 @@ namespace MPFastDevLibrary.Common
             }
             catch (Exception ex)
             {
+                return false;
+            }
+
+            return true;
+        }
+        /// <summary>
+        /// 属性批量大端模式转小端模式（递归处理）
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static bool BigToLittleEndian(ref object obj)
+        {
+            var propertys = obj.GetType().GetProperties();
+            try
+            {
+                foreach (var item in propertys)
+                {
+                    if (item.PropertyType == typeof(uint) || item.PropertyType == typeof(int))
+                    {
+                        uint value = (uint)item.GetValue(obj);
+                        item.SetValue(obj, (uint)System.Net.IPAddress.NetworkToHostOrder((int)value));
+                    }
+                    else if (item.PropertyType == typeof(ushort) || item.PropertyType == typeof(short))
+                    {
+                        ushort value = (ushort)item.GetValue(obj);
+                        item.SetValue(obj, (ushort)System.Net.IPAddress.NetworkToHostOrder((short)value));
+                    }
+                    else if (item.PropertyType == typeof(ulong) || item.PropertyType == typeof(long))
+                    {
+                        ulong value = (ulong)item.GetValue(obj);
+                        item.SetValue(obj, (ulong)System.Net.IPAddress.NetworkToHostOrder((long)value));
+                    }
+                    else if (IsCustomType(item.PropertyType))
+                    {
+                        var value = item.GetValue(obj);
+                        BigToLittleEndian(ref value);
+                        item.SetValue(obj, value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
 
                 return false;
             }
@@ -136,7 +228,31 @@ namespace MPFastDevLibrary.Common
 
             return true;
         }
+
+
+        /// <summary>
+        /// 判断是否自定义类型
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static bool IsCustomType(Type type)
+        {
+            if (type == null)
+                return false;
+            if (type.IsPrimitive || type.IsValueType || type.FullName == typeof(string).FullName || type.Namespace.StartsWith("System"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
     }
+
+
+
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class ByteTest
