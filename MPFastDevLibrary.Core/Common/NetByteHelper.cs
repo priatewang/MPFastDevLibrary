@@ -259,5 +259,8 @@ namespace MPFastDevLibrary.Common
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public int[] MyProperty;
+
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 8)]
+        public string Str;
     }
 }
