@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MPFastDevLibrary.EventMessage
+namespace MPFastDevLibrary.Mvvm
 {
     /// <summary>
     /// 事件聚合器-实现类

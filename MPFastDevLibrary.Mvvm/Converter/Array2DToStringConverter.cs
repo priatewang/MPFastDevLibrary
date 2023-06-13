@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace MPFastDevLibrary.Mvvm.Converter
+namespace MPFastDevLibrary.Mvvm
 {
     public class Array2DToStringConverter : IValueConverter
     {

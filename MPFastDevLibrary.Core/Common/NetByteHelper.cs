@@ -11,7 +11,7 @@ namespace MPFastDevLibrary.Common
     public class NetByteHelper
     {
         /// <summary>
-        /// byte数组转class
+        /// byte数组转结构体
         /// </summary>
         /// <typeparam name="T">类型（需要添加标签[StructLayout(LayoutKind.Sequential, Pack = 1)]对长度进行控制）</typeparam>
         /// <param name="bytes">字节数组</param>
@@ -33,7 +33,7 @@ namespace MPFastDevLibrary.Common
         }
 
         /// <summary>
-        /// class转byte数组
+        /// 结构体转byte数组
         /// </summary>
         /// <typeparam name="T">类型（需要添加标签[StructLayout(LayoutKind.Sequential, Pack = 1)]对长度进行控制）</typeparam>
         /// <param name="structObj">传入的类对象</param>
