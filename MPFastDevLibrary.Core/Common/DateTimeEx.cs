@@ -38,6 +38,23 @@ namespace MPFastDevLibrary.Common
             return (int)Math.Ceiling(dayCount / 7.0);
         }
 
+        /// <summary>
+        /// 判断时间是否今天
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        public static bool IsToday(this DateTime dt)
+        {
+            var date = DateTime.Today;
+            if (date.Year.Equals(dt.Year) 
+                && date.Month.Equals(dt.Month) 
+                && date.Day.Equals(dt.Day))
+            {
+                return true;
+            }
+
+            return false;
+        }
 
     }
 }
