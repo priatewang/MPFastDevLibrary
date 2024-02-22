@@ -12,28 +12,16 @@ namespace MPFastDevLibrary.Common.Tests
     public class SuperConvertTests
     {
         [TestMethod()]
-        public void ConvertToStringTest()
-        {
-
-        }
+        public void ConvertToStringTest() { }
 
         [TestMethod()]
-        public void ConvertToStringTest1()
-        {
-
-        }
+        public void ConvertToStringTest1() { }
 
         [TestMethod()]
-        public void ByteArrayToStringHexTest()
-        {
-
-        }
+        public void ByteArrayToStringHexTest() { }
 
         [TestMethod()]
-        public void HexStringToBtyeArrayTest()
-        {
-
-        }
+        public void HexStringToBtyeArrayTest() { }
 
         [TestMethod()]
         public void DateTimeToTimeStampTest()

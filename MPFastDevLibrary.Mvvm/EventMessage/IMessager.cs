@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MPFastDevLibrary.Mvvm
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IMessager
     {
@@ -24,6 +24,5 @@ namespace MPFastDevLibrary.Mvvm
         /// <param name="msgTag">消息标识</param>
         /// <param name="message">消息内容</param>
         void Publish(string msgTag, object message);
-
     }
 }

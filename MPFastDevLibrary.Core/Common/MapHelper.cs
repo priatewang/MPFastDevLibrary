@@ -12,7 +12,6 @@ namespace MPFastDevLibrary.Common
     /// </summary>
     public class MapHelper
     {
-
         /// <summary>
         /// 类映射，用于同属性名的不同类快速拷贝
         /// </summary>
@@ -40,12 +39,10 @@ namespace MPFastDevLibrary.Common
         /// <param name="source"></param>
         public static void Mapping<T>(ref T target, T source)
         {
-
             foreach (PropertyInfo info in typeof(T).GetProperties())
             {
                 info.SetValue(target, info.GetValue(source));
             }
-           
         }
 
         /// <summary>
@@ -59,6 +56,5 @@ namespace MPFastDevLibrary.Common
         {
             return list.Select(x => Mapping<R, T>(x));
         }
-
     }
 }

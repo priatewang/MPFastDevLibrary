@@ -22,7 +22,6 @@ namespace MPFastDevLibrary.Mvvm
         public static IMessager Default
         {
             get { return _Instance; }
-
         }
 
         /// <summary>
@@ -32,7 +31,7 @@ namespace MPFastDevLibrary.Mvvm
         /// <param name="action">消息执行的动作</param>
         public void Subscribe(string msgTag, Action<object> action)
         {
-            if (action==null)
+            if (action == null)
             {
                 return;
             }
@@ -51,7 +50,7 @@ namespace MPFastDevLibrary.Mvvm
         /// <param name="message">消息内容</param>
         public void Publish(string msgTag, object message)
         {
-            if (_subActions.TryGetValue(msgTag,out var actions))
+            if (_subActions.TryGetValue(msgTag, out var actions))
             {
                 foreach (var item in actions)
                 {
@@ -59,7 +58,6 @@ namespace MPFastDevLibrary.Mvvm
                 }
             }
         }
-
 
         #region 测试方法
 
@@ -70,9 +68,7 @@ namespace MPFastDevLibrary.Mvvm
 
         void Act1(object o)
         {
-
             Console.WriteLine("Act1");
-
         }
 
         void act2(string s1)
@@ -80,7 +76,5 @@ namespace MPFastDevLibrary.Mvvm
             Console.WriteLine("act2:" + s1);
         }
         #endregion
-
-
     }
 }

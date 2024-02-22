@@ -38,11 +38,10 @@ namespace MPFastDevLibrary.Common.Tests
             Assert.AreEqual(100, lines.Length);
         }
 
-
         [TestMethod()]
         public void ReadCsvToDataTableTest()
         {
-            var dt=  CsvHelper.ReadCsvToDataTable("csvTest.csv", false); 
+            var dt = CsvHelper.ReadCsvToDataTable("csvTest.csv", false);
             Assert.IsNotNull(dt);
             Assert.AreEqual(200, dt.Columns.Count);
             Assert.AreEqual(100, dt.Rows.Count);
@@ -57,14 +56,11 @@ namespace MPFastDevLibrary.Common.Tests
             Assert.AreEqual(100, dt.Rows.Count);
         }
 
-      
-
         [TestMethod()]
         public void ReadCsvTest()
         {
-            var lines = CsvHelper.ReadCsv("csvTest.csv",false);
+            var lines = CsvHelper.ReadCsv("csvTest.csv", false);
             Assert.AreEqual(100, lines.Count);
-
         }
     }
 }

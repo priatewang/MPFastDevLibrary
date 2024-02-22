@@ -15,11 +15,7 @@ namespace MPFastDevLibrary.Mvvm.Commands
 
         public bool IsEnableExecute
         {
-            get
-            {
-                return _isEnableExecute;
-            }
-
+            get { return _isEnableExecute; }
             set
             {
                 if (_isEnableExecute != value)
@@ -30,10 +26,9 @@ namespace MPFastDevLibrary.Mvvm.Commands
                         CanExecuteChanged(this, new EventArgs());
                     }
                 }
-
             }
         }
-      
+
         bool ICommand.CanExecute(object parameter)
         {
             return CanExecute(parameter);
@@ -45,9 +40,7 @@ namespace MPFastDevLibrary.Mvvm.Commands
         }
 
         protected abstract bool CanExecute(object parameter);
-      
+
         protected abstract void Execute(object parameter);
-
-
     }
 }

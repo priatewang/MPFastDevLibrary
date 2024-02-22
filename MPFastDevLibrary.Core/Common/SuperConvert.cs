@@ -21,8 +21,6 @@ namespace MPFastDevLibrary.Common
             return Encoding.UTF8.GetString(data, 0, data.Length);
         }
 
-
-
         /// <summary>
         /// 使用指定字符编码将byte数组转成字符串
         /// </summary>
@@ -33,7 +31,6 @@ namespace MPFastDevLibrary.Common
         {
             return encoding.GetString(data, 0, data.Length);
         }
-
 
         /// <summary>
         /// byte数组转为16进制两位字符串，默认以“-”分割
@@ -51,7 +48,7 @@ namespace MPFastDevLibrary.Common
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="data"></param>
         /// <param name="split"></param>
@@ -113,7 +110,6 @@ namespace MPFastDevLibrary.Common
             return result;
         }
 
-
         /// <summary>
         /// DateTime类转Unix时间戳
         /// </summary>
@@ -137,6 +133,5 @@ namespace MPFastDevLibrary.Common
             var t3 = t2.AddMilliseconds(timeStamp);
             return t3;
         }
-
     }
 }

@@ -17,8 +17,10 @@ namespace MPFastDevLibrary.Common.Tests
         {
             [Description("测试1")]
             Test1,
+
             [Description("测试2")]
             Test2,
+
             [Description("测试3")]
             Test3,
         }
@@ -35,7 +37,7 @@ namespace MPFastDevLibrary.Common.Tests
         [TestMethod()]
         public void GetEnumDescriptionsTest()
         {
-            var list=EnumHelper.GetEnumDescriptions<MyEnum>();
+            var list = EnumHelper.GetEnumDescriptions<MyEnum>();
             Assert.IsNotNull(list);
             Assert.AreEqual(3, list.Count);
             Assert.AreEqual("测试1", list[0]);
@@ -44,7 +46,7 @@ namespace MPFastDevLibrary.Common.Tests
         [TestMethod()]
         public void GetDescriptionTest()
         {
-           var str= MyEnum.Test1.GetDescription();
+            var str = MyEnum.Test1.GetDescription();
             Assert.AreEqual("测试1", str);
         }
 
@@ -52,9 +54,8 @@ namespace MPFastDevLibrary.Common.Tests
         public void EnumConvertByDescriptionTest()
         {
             var em = EnumHelper.EnumConvertByDescription<MyEnum>("测试2");
-            Assert.AreEqual(MyEnum.Test2,em);
+            Assert.AreEqual(MyEnum.Test2, em);
         }
-
 
         [TestMethod()]
         public void ConvertToEnumTest()

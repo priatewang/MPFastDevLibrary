@@ -34,27 +34,57 @@ namespace ConsoleAppTest2
 
             Console.WriteLine(add(1, 2)); // 输出 3
 
-
-
             var students = new List<Student>
-{
-    new Student { Id = 1, Name = "张三", Age = 20, Score = 80 },
-    new Student { Id = 2, Name = "李四", Age = 22, Score = 70 },
-    new Student { Id = 3, Name = "王五", Age = 19, Score = 90 },
-    new Student { Id = 4, Name = "赵六", Age = 21, Score = 50 }
-};
+            {
+                new Student
+                {
+                    Id = 1,
+                    Name = "张三",
+                    Age = 20,
+                    Score = 80
+                },
+                new Student
+                {
+                    Id = 2,
+                    Name = "李四",
+                    Age = 22,
+                    Score = 70
+                },
+                new Student
+                {
+                    Id = 3,
+                    Name = "王五",
+                    Age = 19,
+                    Score = 90
+                },
+                new Student
+                {
+                    Id = 4,
+                    Name = "赵六",
+                    Age = 21,
+                    Score = 50
+                }
+            };
 
             //Expression<Func<Student, bool>> exp1 =x => x.Score > 60;
             //Expression<Func<Student, bool>> exp2 = x => x.Ages > 18;
             // var expNew = Expression.AndAlso(exp2.Body, exp1.Body);
 
             var parameter = Expression.Parameter(typeof(Student), "x");
-            Expression<Func<Student, bool>> exp1 = Expression
-                .Lambda<Func<Student, bool>>(Expression.GreaterThan(Expression.Property(parameter, "Score"),
-                Expression.Constant(60)), parameter);
-            Expression<Func<Student, bool>> exp2 = Expression
-                .Lambda<Func<Student, bool>>(Expression.GreaterThan(Expression.Property(parameter, "Age"),
-                Expression.Constant(18)), parameter);
+            Expression<Func<Student, bool>> exp1 = Expression.Lambda<Func<Student, bool>>(
+                Expression.GreaterThan(
+                    Expression.Property(parameter, "Score"),
+                    Expression.Constant(60)
+                ),
+                parameter
+            );
+            Expression<Func<Student, bool>> exp2 = Expression.Lambda<Func<Student, bool>>(
+                Expression.GreaterThan(
+                    Expression.Property(parameter, "Age"),
+                    Expression.Constant(18)
+                ),
+                parameter
+            );
             var expNew = Expression.AndAlso(exp2.Body, exp1.Body);
             var expRes = Expression.Lambda<Func<Student, bool>>(expNew, parameter);
 
@@ -63,12 +93,9 @@ namespace ConsoleAppTest2
             foreach (var item in res)
             {
                 Console.WriteLine(item.ToString());
-
             }
             Console.ReadKey();
-
         }
-
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         class MyStruct
@@ -80,9 +107,6 @@ namespace ConsoleAppTest2
 
             public int end;
         }
-
-
-
     }
 
     public class Student
@@ -99,6 +123,5 @@ namespace ConsoleAppTest2
         {
             return $"Name:{Name},Age:{Age},Score:{Score}";
         }
-
     }
 }

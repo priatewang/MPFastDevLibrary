@@ -19,7 +19,8 @@ namespace MPFastDevLibrary.Common
         /// </summary>
         /// <typeparam name="T">枚举类型</typeparam>
         /// <returns></returns>
-        public static List<string> GetEnumContents<T>() where T : Enum
+        public static List<string> GetEnumContents<T>()
+            where T : Enum
         {
             return Enum.GetNames(typeof(T)).ToList();
         }
@@ -29,9 +30,9 @@ namespace MPFastDevLibrary.Common
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static List<string> GetEnumDescriptions<T>() where T : Enum
+        public static List<string> GetEnumDescriptions<T>()
+            where T : Enum
         {
-
             return Enum.GetValues(typeof(T)).Cast<Enum>().Select(x => x.GetDescription()).ToList();
         }
 
@@ -49,7 +50,9 @@ namespace MPFastDevLibrary.Common
                 FieldInfo field = type.GetField(name);
                 if (field != null)
                 {
-                    DescriptionAttribute attr = Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) as DescriptionAttribute;
+                    DescriptionAttribute attr =
+                        Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute))
+                        as DescriptionAttribute;
                     if (attr != null)
                     {
                         return attr.Description;
@@ -57,8 +60,6 @@ namespace MPFastDevLibrary.Common
                 }
             }
             return null;
-
-
         }
 
         /// <summary>
@@ -70,7 +71,12 @@ namespace MPFastDevLibrary.Common
         public static T EnumConvertByDescription<T>(string desc)
         {
             var fields = typeof(T).GetFields(BindingFlags.Static | BindingFlags.Public);
-            var field = fields.FirstOrDefault(w => (w.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute)?.Description == desc);
+            var field = fields.FirstOrDefault(
+                w =>
+                    (
+                        w.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute
+                    )?.Description == desc
+            );
             if (field == null)
                 return default(T);
             return (T)Enum.Parse(typeof(T), field.Name);
@@ -85,12 +91,11 @@ namespace MPFastDevLibrary.Common
         public static T ConvertToEnum<T>(string enumStr)
         {
             var fields = typeof(T).GetFields(BindingFlags.Static | BindingFlags.Public);
-           var field= fields.FirstOrDefault(w=>w.Name == enumStr);
-            if (field==null)
+            var field = fields.FirstOrDefault(w => w.Name == enumStr);
+            if (field == null)
                 return default(T);
             return (T)Enum.Parse(typeof(T), field.Name);
         }
-
 
         /// <summary>
         /// 将描述转成枚举
@@ -98,14 +103,18 @@ namespace MPFastDevLibrary.Common
         /// <param name="type">类型</param>
         /// <param name="desc"></param>
         /// <returns></returns>
-        public static object EnumConvertByDescription(Type type,string desc)
+        public static object EnumConvertByDescription(Type type, string desc)
         {
             var fields = type.GetFields(BindingFlags.Static | BindingFlags.Public);
-            var field = fields.FirstOrDefault(w => (w.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute)?.Description == desc);
+            var field = fields.FirstOrDefault(
+                w =>
+                    (
+                        w.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute
+                    )?.Description == desc
+            );
             if (field == null)
                 return null;
             return Enum.Parse(type, field.Name);
         }
-
     }
 }

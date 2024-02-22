@@ -12,6 +12,5 @@ namespace MPFastDevLibrary.Mvvm
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
     }
 }

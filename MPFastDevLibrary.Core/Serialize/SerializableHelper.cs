@@ -9,7 +9,6 @@ using System.Xml.Serialization;
 
 namespace MPFastDevLibrary.Common
 {
-
     /// <summary>
     /// 序列化辅助类，二进制和xml的序列化和反序列化
     /// </summary>
@@ -24,8 +23,6 @@ namespace MPFastDevLibrary.Common
         {
             return Encoding.UTF8.GetString(data, 0, data.Length);
         }
-
-       
 
         /// <summary>
         /// 使用UTF8编码将字符串转成byte数组
@@ -73,7 +70,6 @@ namespace MPFastDevLibrary.Common
         {
             using (FileStream fs = new FileStream(path, FileMode.Open))
             {
-
                 BinaryFormatter bf = new BinaryFormatter();
                 T obj = (T)bf.Deserialize(fs);
                 return obj;
@@ -93,12 +89,10 @@ namespace MPFastDevLibrary.Common
         {
             using (FileStream fs = new FileStream(path, FileMode.Open))
             {
-
                 XmlSerializer bf = new XmlSerializer(typeof(T));
                 T obj = (T)bf.Deserialize(fs);
                 return obj;
             }
         }
-
     }
 }

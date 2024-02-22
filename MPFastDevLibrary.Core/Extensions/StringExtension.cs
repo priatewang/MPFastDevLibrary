@@ -16,7 +16,6 @@ namespace MPFastDevLibrary.Common
 
         const string CharactersRegex = "^[A-Za-z]+$";
 
-
         /// <summary>
         /// 判断string是否是整数int
         /// </summary>
@@ -29,8 +28,6 @@ namespace MPFastDevLibrary.Common
             return int.TryParse(str, out var result);
         }
 
-
-
         /// <summary>
         /// 是否浮点数
         /// </summary>
@@ -38,7 +35,8 @@ namespace MPFastDevLibrary.Common
         /// <returns></returns>
         public static bool IsDouble(this string str)
         {
-            if (str == null) return false;
+            if (str == null)
+                return false;
             return double.TryParse(str, out var result);
         }
 
@@ -49,7 +47,8 @@ namespace MPFastDevLibrary.Common
         /// <returns></returns>
         public static bool IsNumber(this string str)
         {
-            if (str == null) return false;
+            if (str == null)
+                return false;
             return Regex.IsMatch(str, numberRegex);
         }
 
@@ -60,9 +59,9 @@ namespace MPFastDevLibrary.Common
         /// <returns></returns>
         public static bool IsCharacters(this string str)
         {
-            if (str == null) return false;
+            if (str == null)
+                return false;
             return Regex.IsMatch(str, CharactersRegex);
         }
-
     }
 }

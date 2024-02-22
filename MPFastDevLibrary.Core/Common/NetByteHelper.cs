@@ -16,11 +16,12 @@ namespace MPFastDevLibrary.Common
         /// <typeparam name="T">类型（需要添加标签[StructLayout(LayoutKind.Sequential, Pack = 1)]对长度进行控制）</typeparam>
         /// <param name="bytes">字节数组</param>
         /// <returns></returns>
-        public static T BytesToStruct<T>(byte[] bytes) where T : class, new()
+        public static T BytesToStruct<T>(byte[] bytes)
+            where T : class, new()
         {
             T obj = new T();
             int size = Marshal.SizeOf(obj);
-            // 如果结构体对象的字节数大于所给byte数组的长度，则返回空            
+            // 如果结构体对象的字节数大于所给byte数组的长度，则返回空
             if (size > bytes.Length)
             {
                 return (default(T));
@@ -38,7 +39,8 @@ namespace MPFastDevLibrary.Common
         /// <typeparam name="T">类型（需要添加标签[StructLayout(LayoutKind.Sequential, Pack = 1)]对长度进行控制）</typeparam>
         /// <param name="structObj">传入的类对象</param>
         /// <returns></returns>
-        public static byte[] StructToBytes<T>(T structObj) where T : class
+        public static byte[] StructToBytes<T>(T structObj)
+            where T : class
         {
             // 获取结构体对象的字节数
             int size = Marshal.SizeOf(structObj);
@@ -47,15 +49,22 @@ namespace MPFastDevLibrary.Common
             IntPtr structPtr = Marshal.AllocHGlobal(size);
             //将结构体内容拷贝到上一步申请的内存空间
             Marshal.StructureToPtr(structObj, structPtr, false);
-            // 将数据拷贝到byte数组            
+            // 将数据拷贝到byte数组
             Marshal.Copy(structPtr, bytes, 0, size);
-            // 释放申请的内存            
+            // 释放申请的内存
             Marshal.FreeHGlobal(structPtr);
             return bytes;
         }
+
         //--------------------------------------------------------
 
-        public static Type[] types = new Type[] { typeof(uint), typeof(UInt16), typeof(UInt64), typeof(UInt32) };
+        public static Type[] types = new Type[]
+        {
+            typeof(uint),
+            typeof(UInt16),
+            typeof(UInt64),
+            typeof(UInt32)
+        };
 
         /// <summary>
         /// 属性批量小端模式转大端模式(一层深度)
@@ -63,9 +72,9 @@ namespace MPFastDevLibrary.Common
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static bool LittleToBigEndianSingle<T>(ref T obj) where T : class
+        public static bool LittleToBigEndianSingle<T>(ref T obj)
+            where T : class
         {
-
             var propertys = typeof(T).GetProperties();
             try
             {
@@ -76,24 +85,32 @@ namespace MPFastDevLibrary.Common
                         uint value = (uint)item.GetValue(obj);
                         item.SetValue(obj, (uint)IPAddress.HostToNetworkOrder((int)value));
                     }
-                    else if (item.PropertyType == typeof(ushort) || item.PropertyType == typeof(short))
+                    else if (
+                        item.PropertyType == typeof(ushort) || item.PropertyType == typeof(short)
+                    )
                     {
                         ushort value = (ushort)item.GetValue(obj);
-                        item.SetValue(obj, (ushort)System.Net.IPAddress.HostToNetworkOrder((short)value));
+                        item.SetValue(
+                            obj,
+                            (ushort)System.Net.IPAddress.HostToNetworkOrder((short)value)
+                        );
                     }
-                    else if (item.PropertyType == typeof(ulong) || item.PropertyType == typeof(long))
+                    else if (
+                        item.PropertyType == typeof(ulong) || item.PropertyType == typeof(long)
+                    )
                     {
                         ulong value = (ulong)item.GetValue(obj);
-                        item.SetValue(obj, (ulong)System.Net.IPAddress.HostToNetworkOrder((long)value));
+                        item.SetValue(
+                            obj,
+                            (ulong)System.Net.IPAddress.HostToNetworkOrder((long)value)
+                        );
                     }
                 }
             }
             catch (Exception ex)
             {
-
                 return false;
             }
-
 
             return true;
         }
@@ -119,15 +136,25 @@ namespace MPFastDevLibrary.Common
                         uint value = (uint)item.GetValue(obj);
                         item.SetValue(obj, (uint)IPAddress.HostToNetworkOrder((int)value));
                     }
-                    else if (item.PropertyType == typeof(ushort) || item.PropertyType == typeof(short))
+                    else if (
+                        item.PropertyType == typeof(ushort) || item.PropertyType == typeof(short)
+                    )
                     {
                         ushort value = (ushort)item.GetValue(obj);
-                        item.SetValue(obj, (ushort)System.Net.IPAddress.HostToNetworkOrder((short)value));
+                        item.SetValue(
+                            obj,
+                            (ushort)System.Net.IPAddress.HostToNetworkOrder((short)value)
+                        );
                     }
-                    else if (item.PropertyType == typeof(ulong) || item.PropertyType == typeof(long))
+                    else if (
+                        item.PropertyType == typeof(ulong) || item.PropertyType == typeof(long)
+                    )
                     {
                         ulong value = (ulong)item.GetValue(obj);
-                        item.SetValue(obj, (ulong)System.Net.IPAddress.HostToNetworkOrder((long)value));
+                        item.SetValue(
+                            obj,
+                            (ulong)System.Net.IPAddress.HostToNetworkOrder((long)value)
+                        );
                     }
                     else if (IsCustomType(item.PropertyType))
                     {
@@ -139,10 +166,8 @@ namespace MPFastDevLibrary.Common
             }
             catch (Exception ex)
             {
-
                 return false;
             }
-
 
             return true;
         }
@@ -153,7 +178,8 @@ namespace MPFastDevLibrary.Common
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static bool BigToLittleEndianSingle<T>(ref T obj) where T : class
+        public static bool BigToLittleEndianSingle<T>(ref T obj)
+            where T : class
         {
             var propertys = typeof(T).GetProperties();
             try
@@ -163,17 +189,30 @@ namespace MPFastDevLibrary.Common
                     if (item.PropertyType == typeof(uint) || item.PropertyType == typeof(int))
                     {
                         uint value = (uint)item.GetValue(obj);
-                        item.SetValue(obj, (uint)System.Net.IPAddress.NetworkToHostOrder((int)value));
+                        item.SetValue(
+                            obj,
+                            (uint)System.Net.IPAddress.NetworkToHostOrder((int)value)
+                        );
                     }
-                    else if (item.PropertyType == typeof(ushort) || item.PropertyType == typeof(short))
+                    else if (
+                        item.PropertyType == typeof(ushort) || item.PropertyType == typeof(short)
+                    )
                     {
                         ushort value = (ushort)item.GetValue(obj);
-                        item.SetValue(obj, (ushort)System.Net.IPAddress.NetworkToHostOrder((short)value));
+                        item.SetValue(
+                            obj,
+                            (ushort)System.Net.IPAddress.NetworkToHostOrder((short)value)
+                        );
                     }
-                    else if (item.PropertyType == typeof(ulong) || item.PropertyType == typeof(long))
+                    else if (
+                        item.PropertyType == typeof(ulong) || item.PropertyType == typeof(long)
+                    )
                     {
                         ulong value = (ulong)item.GetValue(obj);
-                        item.SetValue(obj, (ulong)System.Net.IPAddress.NetworkToHostOrder((long)value));
+                        item.SetValue(
+                            obj,
+                            (ulong)System.Net.IPAddress.NetworkToHostOrder((long)value)
+                        );
                     }
                 }
             }
@@ -184,6 +223,7 @@ namespace MPFastDevLibrary.Common
 
             return true;
         }
+
         /// <summary>
         /// 属性批量大端模式转小端模式（递归处理）
         /// </summary>
@@ -199,17 +239,30 @@ namespace MPFastDevLibrary.Common
                     if (item.PropertyType == typeof(uint) || item.PropertyType == typeof(int))
                     {
                         uint value = (uint)item.GetValue(obj);
-                        item.SetValue(obj, (uint)System.Net.IPAddress.NetworkToHostOrder((int)value));
+                        item.SetValue(
+                            obj,
+                            (uint)System.Net.IPAddress.NetworkToHostOrder((int)value)
+                        );
                     }
-                    else if (item.PropertyType == typeof(ushort) || item.PropertyType == typeof(short))
+                    else if (
+                        item.PropertyType == typeof(ushort) || item.PropertyType == typeof(short)
+                    )
                     {
                         ushort value = (ushort)item.GetValue(obj);
-                        item.SetValue(obj, (ushort)System.Net.IPAddress.NetworkToHostOrder((short)value));
+                        item.SetValue(
+                            obj,
+                            (ushort)System.Net.IPAddress.NetworkToHostOrder((short)value)
+                        );
                     }
-                    else if (item.PropertyType == typeof(ulong) || item.PropertyType == typeof(long))
+                    else if (
+                        item.PropertyType == typeof(ulong) || item.PropertyType == typeof(long)
+                    )
                     {
                         ulong value = (ulong)item.GetValue(obj);
-                        item.SetValue(obj, (ulong)System.Net.IPAddress.NetworkToHostOrder((long)value));
+                        item.SetValue(
+                            obj,
+                            (ulong)System.Net.IPAddress.NetworkToHostOrder((long)value)
+                        );
                     }
                     else if (IsCustomType(item.PropertyType))
                     {
@@ -221,14 +274,11 @@ namespace MPFastDevLibrary.Common
             }
             catch (Exception ex)
             {
-
                 return false;
             }
 
-
             return true;
         }
-
 
         /// <summary>
         /// 判断是否自定义类型
@@ -239,7 +289,12 @@ namespace MPFastDevLibrary.Common
         {
             if (type == null)
                 return false;
-            if (type.IsPrimitive || type.IsValueType || type.FullName == typeof(string).FullName || type.Namespace.StartsWith("System"))
+            if (
+                type.IsPrimitive
+                || type.IsValueType
+                || type.FullName == typeof(string).FullName
+                || type.Namespace.StartsWith("System")
+            )
             {
                 return false;
             }
@@ -248,11 +303,7 @@ namespace MPFastDevLibrary.Common
                 return true;
             }
         }
-
     }
-
-
-
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class ByteTest

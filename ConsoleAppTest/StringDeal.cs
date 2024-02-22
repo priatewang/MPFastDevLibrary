@@ -9,7 +9,6 @@ namespace ConsoleAppTest
 {
     public class StringDeal
     {
-
         /// <summary>
         /// 设备开关键值对
         /// </summary>
@@ -50,11 +49,9 @@ namespace ConsoleAppTest
                 }
                 if (MidBracketMatch(tmp) == 0 && SmallBracketMatch(tmp) == 0)
                 {
-
                     list.Add(tmp);
                     tmp = "";
                     continue;
-
                 }
                 tmp += sign;
             }
@@ -74,7 +71,6 @@ namespace ConsoleAppTest
                     if (isAnd)
                     {
                         res = res && GetValue(list[i]);
-
                     }
                     else
                     {
@@ -97,7 +93,6 @@ namespace ConsoleAppTest
                     if (isAnd)
                     {
                         res = res && subRes;
-
                     }
                     else
                     {
@@ -107,7 +102,6 @@ namespace ConsoleAppTest
             }
             return res;
         }
-
 
         /// <summary>
         /// 判断中括号是否成对
@@ -138,7 +132,5 @@ namespace ConsoleAppTest
         {
             return DeviceValues[id];
         }
-
-
     }
 }

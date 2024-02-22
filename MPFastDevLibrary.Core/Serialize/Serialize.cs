@@ -23,7 +23,6 @@ namespace MPFastDevLibrary
     /// </summary>
     public class Serialize
     {
-
         #region 二进制
 
         /// <summary>

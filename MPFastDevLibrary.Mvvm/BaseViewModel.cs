@@ -25,10 +25,11 @@ namespace MPFastDevLibrary.Mvvm
         /// 当前ViewModel对应的元素（窗体/页面/控件）
         /// </summary>
         public FrameworkElement UIElement { get; set; }
+
         /// <summary>
         /// 主窗体
         /// </summary>
-        public Window WindowMain { get; set; }  
+        public Window WindowMain { get; set; }
 
         /// <summary>
         /// 窗体/页面/控件的关闭委托
@@ -45,10 +46,10 @@ namespace MPFastDevLibrary.Mvvm
         #region 通过反射创建对应的UI元素
         public void SetUIElement()
         {
-            Type childType = this.GetType();//获取子类的类型   
+            Type childType = this.GetType(); //获取子类的类型
             string name = this.GetType().Name;
             UIElementName = name.Replace("_VM", "");
-            UIElementName = UIElementName.Replace("`1", "");//应对泛型实体
+            UIElementName = UIElementName.Replace("`1", ""); //应对泛型实体
 
             if (name.Contains("Window"))
             {
@@ -148,16 +149,8 @@ namespace MPFastDevLibrary.Mvvm
         }
         #endregion
 
-        public virtual void Stop()
-        {
+        public virtual void Stop() { }
 
-        }
-
-
-
-        public virtual void Update()
-        {
-
-        }
+        public virtual void Update() { }
     }
 }

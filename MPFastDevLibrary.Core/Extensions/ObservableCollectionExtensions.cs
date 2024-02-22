@@ -20,7 +20,6 @@ namespace MPFastDevLibrary.Common
             values.Remove(1);
         }
 
-
         /// <summary>
         /// 批量添加ObservableCollection的项（循环添加）
         /// </summary>
@@ -52,7 +51,10 @@ namespace MPFastDevLibrary.Common
         /// <param name="collection"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static bool RemoveRange<T>(this ObservableCollection<T> obs,IEnumerable<T> collection)
+        public static bool RemoveRange<T>(
+            this ObservableCollection<T> obs,
+            IEnumerable<T> collection
+        )
         {
             if (obs == null)
                 throw new ArgumentNullException();
@@ -64,7 +66,5 @@ namespace MPFastDevLibrary.Common
             }
             return true;
         }
-
-
     }
 }

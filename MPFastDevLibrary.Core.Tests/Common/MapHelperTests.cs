@@ -18,9 +18,6 @@ namespace MPFastDevLibrary.Common.Tests
             public string Name { get; set; }
 
             public string Desc { get; set; }
-
-
-
         }
 
         class TestClass2
@@ -30,12 +27,7 @@ namespace MPFastDevLibrary.Common.Tests
             public string Name { get; set; }
 
             public string Desc { get; set; }
-
-
-
         }
-
-
 
         [TestMethod()]
         public void MappingTest()
@@ -49,9 +41,8 @@ namespace MPFastDevLibrary.Common.Tests
             var t2 = MapHelper.Mapping<TestClass2, TestClass1>(t1);
 
             Assert.AreEqual(1, t2.Id);
-            Assert.AreEqual("1号",t2.Desc);
-            Assert.AreEqual("Name1",t2.Name);
-
+            Assert.AreEqual("1号", t2.Desc);
+            Assert.AreEqual("Name1", t2.Name);
         }
 
         [TestMethod()]
@@ -64,7 +55,7 @@ namespace MPFastDevLibrary.Common.Tests
                 Name = "Name1",
             };
 
-            TestClass1 t2=new TestClass1();
+            TestClass1 t2 = new TestClass1();
             MapHelper.Mapping(ref t2, t1);
 
             Assert.AreEqual(1, t2.Id);

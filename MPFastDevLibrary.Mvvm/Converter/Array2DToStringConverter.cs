@@ -12,7 +12,6 @@ namespace MPFastDevLibrary.Mvvm
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-
             var array2d = value as double[,];
             string res = "";
             for (int i = 0; i < array2d.GetLength(0); i++)
@@ -30,7 +29,12 @@ namespace MPFastDevLibrary.Mvvm
             return res;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(
+            object value,
+            Type targetType,
+            object parameter,
+            CultureInfo culture
+        )
         {
             if (value == null)
                 return default(double[,]);
@@ -46,7 +50,6 @@ namespace MPFastDevLibrary.Mvvm
                     if (double.TryParse(values[j], out double d))
                     {
                         doubles[i, j] = d;
-
                     }
                 }
             }

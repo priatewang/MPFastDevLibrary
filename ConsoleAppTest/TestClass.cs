@@ -6,9 +6,5 @@ using System.Threading.Tasks;
 
 namespace ConsoleAppTest
 {
-    public class TestClass
-    {
-
-
-    }
+    public class TestClass { }
 }

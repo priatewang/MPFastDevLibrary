@@ -21,7 +21,7 @@ namespace MPFastDevLibrary.Extensions
         {
             if (!list.Contains(t))
             {
-                list.Add(t); 
+                list.Add(t);
             }
         }
 
@@ -31,11 +31,9 @@ namespace MPFastDevLibrary.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <param name="dels"></param>
-        public static void DeleteRange<T>(this List<T> list,IEnumerable<T> dels)
+        public static void DeleteRange<T>(this List<T> list, IEnumerable<T> dels)
         {
             list.RemoveAll(t => dels.Contains(t));
         }
-
-
     }
 }

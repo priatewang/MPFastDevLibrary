@@ -29,7 +29,6 @@ namespace ConsoleAppTest
 
             Console.WriteLine(att.RelationClassType);
 
-
             ContainerBuilder builder = new ContainerBuilder();
             builder.AutoRegisterIoc();
             //builder.RegisterType<User>();
@@ -83,7 +82,7 @@ namespace ConsoleAppTest
             var t2 = DateTime.SpecifyKind(new DateTime(1970, 1, 1, 8, 0, 0, 0), DateTimeKind.Local);
             Console.WriteLine(t2.ToString());
             //var t2 = new DateTime(1970, 1, 1, 8, 0, 0, 0);
-          var t3=  t2.AddMilliseconds(s);
+            var t3 = t2.AddMilliseconds(s);
             Console.WriteLine(t3.ToString());
 #endif
             #endregion
@@ -135,18 +134,18 @@ namespace ConsoleAppTest
             sw.Restart();
             for (int i = 0; i < 10000; i++)
             {
-                var str = "10000001,[10000002|10000003],[(10000004,10000005)|(10000006,[(10000007,10000008)|(10000009,10000010)|(10000011,10000012,10000013)|(10000014,10000015,10000016)])]";
-                //Console.WriteLine(str); 
+                var str =
+                    "10000001,[10000002|10000003],[(10000004,10000005)|(10000006,[(10000007,10000008)|(10000009,10000010)|(10000011,10000012,10000013)|(10000014,10000015,10000016)])]";
                 //Console.WriteLine(str);
-               
+                //Console.WriteLine(str);
+
                 SplitString(str);
-               
             }
             sw.Stop();
             TimeSpan timespan = sw.Elapsed;
             Console.WriteLine("程序耗时:'{0}'ms", timespan.TotalMilliseconds);
 
-                        //var str = "10000001,[10000002|10000003],[(10000004,10000005)|(10000006,[(10000007,10000008)|(10000009,10000010)|(10000011,10000012,110000012)|(10000013,10000014,10000015)])]";
+            //var str = "10000001,[10000002|10000003],[(10000004,10000005)|(10000006,[(10000007,10000008)|(10000009,10000010)|(10000011,10000012,110000012)|(10000013,10000014,10000015)])]";
             //Stopwatch sw = new Stopwatch();
             //sw.Restart();
             //SplitString(str);
@@ -184,13 +183,17 @@ namespace ConsoleAppTest
             Console.WriteLine("string:  " + tp3.IsValueType);
             Console.WriteLine("Char:    " + tp4.IsValueType);
 
-
             Console.ReadKey();
         }
 
         static bool TypeIsMyClass(Type type)
         {
-            if (type.IsPrimitive||type.IsValueType|| type.FullName == typeof(string).FullName|| type.Namespace.StartsWith("System"))
+            if (
+                type.IsPrimitive
+                || type.IsValueType
+                || type.FullName == typeof(string).FullName
+                || type.Namespace.StartsWith("System")
+            )
             {
                 return false;
             }
@@ -203,7 +206,7 @@ namespace ConsoleAppTest
         /// <summary>
         /// 设备开关键值对
         /// </summary>
-         static Dictionary<string,bool> DeviceValues=new Dictionary<string,bool>();
+        static Dictionary<string, bool> DeviceValues = new Dictionary<string, bool>();
 
         static bool SplitString(string str, char sign = ',')
         {
@@ -240,11 +243,9 @@ namespace ConsoleAppTest
                 }
                 if (MidBracketMatch(tmp) == 0 && SmallBracketMatch(tmp) == 0)
                 {
-
                     list.Add(tmp);
                     tmp = "";
                     continue;
-
                 }
                 tmp += sign;
             }
@@ -264,7 +265,6 @@ namespace ConsoleAppTest
                     if (isAnd)
                     {
                         res = res && GetValue(list[i]);
-
                     }
                     else
                     {
@@ -278,16 +278,15 @@ namespace ConsoleAppTest
                     bool subRes = false;
                     if (list[i][0] == '[')
                     {
-                        subRes= SplitString(value,'|');
+                        subRes = SplitString(value, '|');
                     }
                     else
                     {
-                        subRes= SplitString(value, ',');
+                        subRes = SplitString(value, ',');
                     }
                     if (isAnd)
                     {
                         res = res && subRes;
-
                     }
                     else
                     {
@@ -316,13 +315,12 @@ namespace ConsoleAppTest
         /// <returns></returns>
         static int SmallBracketMatch(string str)
         {
-           // return str.Count(x => x == '(') - str.Count(x => x == ')');
-           return CharCount(str,'(')-CharCount(str,')');
+            // return str.Count(x => x == '(') - str.Count(x => x == ')');
+            return CharCount(str, '(') - CharCount(str, ')');
         }
 
-        static int CharCount(string str,char c)
+        static int CharCount(string str, char c)
         {
-           
             return str.Split(c).Length - 1;
         }
 
@@ -336,17 +334,9 @@ namespace ConsoleAppTest
             return DeviceValues[id];
         }
 
-
         static void Write1(object o)
         {
             Console.WriteLine("write1:" + o.ToString());
-
         }
     }
-
-
-
-
-
-
 }

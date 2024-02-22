@@ -22,9 +22,12 @@ namespace MPFastDevLibrary.Common
         /// <param name="hasTitle">是否有标题行</param>
         /// <param name="SafeLevel">安全等级：0:错误格式行正常添加；1：错误行忽略（不添加），2：出现错误弹出异常</param>
         /// <returns></returns>
-        public static DataTable ReadCsvToDataTable(string path, bool hasTitle = false, int SafeLevel = 0)
+        public static DataTable ReadCsvToDataTable(
+            string path,
+            bool hasTitle = false,
+            int SafeLevel = 0
+        )
         {
-
             DataTable dt = new DataTable();
             var lines = ReadCsv(path, false);
             bool isFirst = true;
@@ -73,10 +76,8 @@ namespace MPFastDevLibrary.Common
                         default:
                             throw new Exception("CSV格式错误：表格各行列数不一致");
                     }
-
                 }
             }
-
 
             return dt;
         }
@@ -89,18 +90,20 @@ namespace MPFastDevLibrary.Common
         /// <param name="SafeLevel">安全等级：0:错误格式行正常添加；1：错误行忽略（不添加），2：出现错误弹出异常</param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static DataTable ReadCsvByStream(string path, bool hasTitle = false, int SafeLevel = 0)
+        public static DataTable ReadCsvByStream(
+            string path,
+            bool hasTitle = false,
+            int SafeLevel = 0
+        )
         {
             DataTable dt = new DataTable();
             bool isFirst = true;
 
             using (StreamReader sr = new StreamReader(path))
             {
-
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-
                     string[] values = line.Split(',');
                     if (isFirst)
                     {
@@ -134,7 +137,10 @@ namespace MPFastDevLibrary.Common
                                     if (values.Length > dt.Columns.Count)
                                     {
                                         var res = values.ToList();
-                                        res.RemoveRange(dt.Columns.Count, values.Length - dt.Columns.Count);
+                                        res.RemoveRange(
+                                            dt.Columns.Count,
+                                            values.Length - dt.Columns.Count
+                                        );
                                         dt.Rows.Add(res.ToArray());
                                     }
                                     else
@@ -147,7 +153,6 @@ namespace MPFastDevLibrary.Common
                                 default:
                                     throw new Exception("CSV格式错误：表格各行列数不一致");
                             }
-
                         }
                     }
                 }
@@ -199,7 +204,6 @@ namespace MPFastDevLibrary.Common
             return true;
         }
 
-
         /// <summary>
         /// 读取Csv，返回行集合
         /// </summary>
@@ -210,7 +214,7 @@ namespace MPFastDevLibrary.Common
         {
             if (!File.Exists(path))
                 return new List<string>();
-            
+
             var lines = File.ReadAllLines(path).ToList();
             if (hasTitle)
             {
@@ -219,7 +223,6 @@ namespace MPFastDevLibrary.Common
             return lines;
         }
 
-
         public static void ReadCsvUseAction(string path, Action action, bool hasTitle = false)
         {
             var lines = ReadCsv(path, hasTitle);
@@ -227,8 +230,6 @@ namespace MPFastDevLibrary.Common
             {
                 action?.Invoke();
             }
-
         }
-
     }
 }
