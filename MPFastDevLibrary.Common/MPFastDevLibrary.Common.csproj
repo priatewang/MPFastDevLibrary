@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net472;net6.0</TargetFrameworks>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Piratewang</Authors>
+    <Company>CompanyPiratewang</Company>
+    <Description>常用的通用类库</Description>
+    <Copyright>Copyright ©  2024</Copyright>
+    <PackageProjectUrl>https://github.com/priatewang/MPFastDevLibrary</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net472'">
+    <PackageReference Include="SqlSugar" Version="5.1.4.143" />
+    <PackageReference Include="Autofac" Version="7.1.0" />
+  </ItemGroup>
+  
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
+    <PackageReference Include="SqlSugarCore" Version="5.1.4.113" />
+    <PackageReference Include="Autofac" Version="7.1.0" />
+  </ItemGroup>
+
+
+</Project>
