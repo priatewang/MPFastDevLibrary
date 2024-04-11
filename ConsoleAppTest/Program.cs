@@ -4,7 +4,6 @@ using System;
 using System.Reflection;
 using MPFastDevLibrary.Common;
 using MPFastDevLibrary.Mvvm;
-using MPFastDevLibrary.EventMessage;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Linq;
