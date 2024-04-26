@@ -17,7 +17,7 @@ namespace MPFastDevLibrary.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <param name="t"></param>
-        public static void AddWithout<T>(this List<T> list, T t)
+        public static void AddNotExist<T>(this List<T> list, T t)
         {
             if (!list.Contains(t))
             {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MPFastDevLibrary.Common
+namespace MPFastDevLibrary.Extensions
 {
     /// <summary>
     /// DataTime时间扩展方法
@@ -46,12 +46,7 @@ namespace MPFastDevLibrary.Common
         public static bool IsToday(this DateTime dt)
         {
             var date = DateTime.Today;
-            if (date.Year.Equals(dt.Year) && date.Month.Equals(dt.Month) && date.Day.Equals(dt.Day))
-            {
-                return true;
-            }
-
-            return false;
+            return dt.Date == DateTime.Today;
         }
     }
 }

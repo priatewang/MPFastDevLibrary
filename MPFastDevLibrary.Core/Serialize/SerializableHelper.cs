@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace MPFastDevLibrary.Common
+namespace MPFastDevLibrary.Serialize
 {
     /// <summary>
     /// 序列化辅助类，二进制和xml的序列化和反序列化

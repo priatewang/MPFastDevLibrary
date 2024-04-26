@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace MPFastDevLibrary.Common
+namespace MPFastDevLibrary.Extensions
 {
     /// <summary>
     /// string 扩展方法类

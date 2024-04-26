@@ -16,7 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace MPFastDevLibrary
+namespace MPFastDevLibrary.Serialize
 {
     /// <summary>
     /// 序列化
@@ -51,7 +51,7 @@ namespace MPFastDevLibrary
         public static T BinaryDeserialize<T>(byte[] data)
         {
             if (data.Length == 0)
-                return default(T);
+                return default;
             MemoryStream stream = new MemoryStream();
             stream.Write(data, 0, data.Length);
             BinaryFormatter bf = new BinaryFormatter();

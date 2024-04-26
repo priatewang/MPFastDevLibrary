@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MPFastDevLibrary.Common
+namespace MPFastDevLibrary.Extensions
 {
     /// <summary>
     /// ObservableCollection扩展
@@ -64,6 +64,26 @@ namespace MPFastDevLibrary.Common
             {
                 obs.Remove(item);
             }
+            return true;
+        }
+
+        /// <summary>
+        /// 条件添加，如果不存在则添加
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obs"></param>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static bool AddNotExist<T>(this ObservableCollection<T> obs, T item)
+        {
+            if (obs == null)
+                throw new ArgumentNullException();
+            if (item == null)
+                return false;
+            if (obs.Contains(item))
+                return false;
+            obs.Add(item);
             return true;
         }
     }
