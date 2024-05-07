@@ -13,13 +13,6 @@ namespace MPFastDevLibrary.Extensions
     /// </summary>
     public static class ObservableCollectionExtensions
     {
-        private static void Test()
-        {
-            ObservableCollection<int> values = new ObservableCollection<int> { 1, 2, 3, 4, 5, 6, };
-            values.Add(1);
-            values.Remove(1);
-        }
-
         /// <summary>
         /// 批量添加ObservableCollection的项（循环添加）
         /// </summary>
